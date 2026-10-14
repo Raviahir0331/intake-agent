@@ -1,0 +1,43 @@
+{
+  "name": "intake-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI agent that ingests leads (CSV) and patients (FHIR R4), decides outreach, and delivers to a mock CRM.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "pipeline": "tsx src/cli.ts",
+    "pipeline:failures": "tsx src/cli.ts --inject-failures",
+    "pipeline:offline": "tsx src/cli.ts --offline --inject-failures",
+    "crm": "tsx src/crm/runMockCrm.ts",
+    "eval": "tsx scripts/evaluateAgent.ts",
+    "save-sample": "tsx scripts/saveSample.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "check": "npm run typecheck && npm run lint && npm test"
+  },
+  "dependencies": {
+    "csv-parse": "^7.0.3",
+    "express": "^5.3.0",
+    "openai": "^7.33.0",
+    "p-limit": "^7.3.3",
+    "pino": "^10.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.12.0",
+    "pino-pretty": "^13.2.0",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.4"
+  }
+}

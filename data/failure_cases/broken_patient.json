@@ -1,0 +1,7 @@
+{
+  "resourceType": "Patient",
+  "id": "broken-0001",
+  "gender": "female",
+  "birthDate": "03/14/1980",
+  "telecom": [{ "system": "phone", "value": "555-010-2020" }]
+}

@@ -1,0 +1,21 @@
+{
+  "_note": "Hand-labelled tiers for the 18 leads. `npm run eval` measures how often the agent agrees.",
+  "L001": "warm",
+  "L002": "warm",
+  "L003": "warm",
+  "L004": "warm",
+  "L005": "hot",
+  "L006": "warm",
+  "L007": "warm",
+  "L008": "warm",
+  "L009": "hot",
+  "L010": "cold",
+  "L011": "warm",
+  "L012": "warm",
+  "L013": "cold",
+  "L014": "cold",
+  "L015": "hot",
+  "L016": "warm",
+  "L017": "warm",
+  "L018": "cold"
+}

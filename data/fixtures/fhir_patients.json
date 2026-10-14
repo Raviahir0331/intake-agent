@@ -1,0 +1,2308 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "meta": {
+    "tag": [
+      {
+        "code": "fixture",
+        "display": "Hand-written in the Synthea style for offline runs and tests. Not real patients."
+      }
+    ]
+  },
+  "entry": [
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/bdd640fb-0667-4ad1-9c80-317fa3b1799d",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "bdd640fb-0667-4ad1-9c80-317fa3b1799d",
+        "name": [
+          {
+            "use": "official",
+            "family": "Brekke496",
+            "given": [
+              "Aaron697"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-381-5012",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1961-03-14",
+        "address": [
+          {
+            "line": [
+              "238 Main St"
+            ],
+            "city": "Boston",
+            "state": "Massachusetts",
+            "postalCode": "01285",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bd9c66b3-ad3c-4d6d-9a3d-1fa7bc8960a9",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "972a8469-1641-4f82-8b9d-2434e465e150",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/bdd640fb-0667-4ad1-9c80-317fa3b1799d"
+        },
+        "onsetDateTime": "2018-01-10T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:815ef6d1-3b8f-4a18-b7f8-a88b17fc695a",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "32e70629-8fad-41a6-86cb-0fb39a1de644",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "55822004",
+              "display": "Hyperlipidemia"
+            }
+          ],
+          "text": "Hyperlipidemia"
+        },
+        "subject": {
+          "reference": "Patient/bdd640fb-0667-4ad1-9c80-317fa3b1799d"
+        },
+        "onsetDateTime": "2022-07-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cf36d58b-4737-4190-96da-1dac72ff5d2a",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "ce4a2bbd-c241-430b-81a9-e71fde8a774b",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160903007",
+              "display": "Full-time employment (finding)"
+            }
+          ],
+          "text": "Full-time employment (finding)"
+        },
+        "subject": {
+          "reference": "Patient/bdd640fb-0667-4ad1-9c80-317fa3b1799d"
+        },
+        "onsetDateTime": "2010-07-15T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/f50bea63-371e-4d7b-a7cd-813047229389",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "f50bea63-371e-4d7b-a7cd-813047229389",
+        "name": [
+          {
+            "use": "official",
+            "family": "Garcia388",
+            "given": [
+              "Maria914"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-881-6514",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1978-09-02",
+        "address": [
+          {
+            "line": [
+              "114 Main St"
+            ],
+            "city": "Lawrence",
+            "state": "Massachusetts",
+            "postalCode": "01189",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "es"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d8f56413-5be6-428e-98c2-67976142ea7d",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "ce9ff57f-43b7-43a6-9a8d-ca03580d7b71",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "44054006",
+              "display": "Diabetes mellitus type 2 (disorder)"
+            }
+          ],
+          "text": "Diabetes mellitus type 2 (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/f50bea63-371e-4d7b-a7cd-813047229389"
+        },
+        "onsetDateTime": "2006-08-18T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:60e7a113-ec1b-4ca1-b91e-1d4c1ff49b78",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "d453dd32-4b0d-4b41-8d52-88f1142c3fe8",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "314529007",
+              "display": "Medication review due (situation)"
+            }
+          ],
+          "text": "Medication review due (situation)"
+        },
+        "subject": {
+          "reference": "Patient/f50bea63-371e-4d7b-a7cd-813047229389"
+        },
+        "onsetDateTime": "2016-04-11T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/c5e7ce8a-3a57-4a8e-a948-8d990bbb2599",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "c5e7ce8a-3a57-4a8e-a948-8d990bbb2599",
+        "name": [
+          {
+            "use": "official",
+            "family": "Lind531",
+            "given": [
+              "Kelly223"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-396-2307",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "kelly.lind@example.com"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1990-01-22",
+        "address": [
+          {
+            "line": [
+              "885 Main St"
+            ],
+            "city": "Worcester",
+            "state": "Massachusetts",
+            "postalCode": "01476",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:47294739-614f-43d7-99db-3ad0ddd1dfb2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "5d65a441-d588-42de-a2bc-372f7412b293",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "444814009",
+              "display": "Viral sinusitis (disorder)"
+            }
+          ],
+          "text": "Viral sinusitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/c5e7ce8a-3a57-4a8e-a948-8d990bbb2599"
+        },
+        "onsetDateTime": "2010-06-15T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:b3aa7efe-4458-4885-ab90-99a435a240ae",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "12476f57-a5e5-45ab-aefc-fad8efc89849",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160903007",
+              "display": "Full-time employment (finding)"
+            }
+          ],
+          "text": "Full-time employment (finding)"
+        },
+        "subject": {
+          "reference": "Patient/c5e7ce8a-3a57-4a8e-a948-8d990bbb2599"
+        },
+        "onsetDateTime": "2010-09-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/451b4cf3-6123-4df7-b656-af7229d4beef",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "451b4cf3-6123-4df7-b656-af7229d4beef",
+        "name": [
+          {
+            "use": "official",
+            "family": "Ortiz186",
+            "given": [
+              "Jose871"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-755-4598",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1949-11-30",
+        "address": [
+          {
+            "line": [
+              "711 Main St"
+            ],
+            "city": "Springfield",
+            "state": "Massachusetts",
+            "postalCode": "01664",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0e51f30d-c6a7-4e39-84b0-32ccd7c524a5",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "ce177b4e-0837-48a3-9261-a7ab3aa2e4f9",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "88805009",
+              "display": "Chronic congestive heart failure (disorder)"
+            }
+          ],
+          "text": "Chronic congestive heart failure (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/451b4cf3-6123-4df7-b656-af7229d4beef"
+        },
+        "onsetDateTime": "2015-07-14T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f16287e4-e9c3-49e0-b602-f8ac10f1bc81",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "508ebad7-b7c9-4acf-a059-a0ee9132b63e",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/451b4cf3-6123-4df7-b656-af7229d4beef"
+        },
+        "onsetDateTime": "2011-08-16T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:757750a9-a491-40b2-aa1f-ca65e27a984d",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3f22faf8-23be-401d-83cf-2fde24933b83",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "431857002",
+              "display": "Chronic kidney disease stage 4 (disorder)"
+            }
+          ],
+          "text": "Chronic kidney disease stage 4 (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/451b4cf3-6123-4df7-b656-af7229d4beef"
+        },
+        "onsetDateTime": "2022-09-14T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/e5d7b875-6dad-46c7-95a7-6d79bf3c4c06",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "e5d7b875-6dad-46c7-95a7-6d79bf3c4c06",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen84",
+            "given": [
+              "Linda312"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-697-7543",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1955-06-18",
+        "address": [
+          {
+            "line": [
+              "380 Main St"
+            ],
+            "city": "Quincy",
+            "state": "Massachusetts",
+            "postalCode": "01449",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:827050a8-2369-4584-bf5e-9ff0ff50bde4",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0c0fd195-c17a-408a-9745-d6d87e570ddf",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "254837009",
+              "display": "Malignant neoplasm of breast (disorder)"
+            }
+          ],
+          "text": "Malignant neoplasm of breast (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/e5d7b875-6dad-46c7-95a7-6d79bf3c4c06"
+        },
+        "onsetDateTime": "2008-03-12T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:98ae4334-6c12-4ce8-ae34-0454cac5b68c",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "988c24c9-61b1-4d22-a280-1c4510435a10",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "55822004",
+              "display": "Hyperlipidemia"
+            }
+          ],
+          "text": "Hyperlipidemia"
+        },
+        "subject": {
+          "reference": "Patient/e5d7b875-6dad-46c7-95a7-6d79bf3c4c06"
+        },
+        "onsetDateTime": "2019-09-14T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/f143262f-dc5c-4eed-8da0-365bf89897b9",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "f143262f-dc5c-4eed-8da0-365bf89897b9",
+        "name": [
+          {
+            "use": "official",
+            "family": "Hahn503",
+            "given": [
+              "Derek51"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-111-2876",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1984-04-09",
+        "address": [
+          {
+            "line": [
+              "708 Main St"
+            ],
+            "city": "Cambridge",
+            "state": "Massachusetts",
+            "postalCode": "02812",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:c4c2e2e3-444e-47c8-8039-87108976e334",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "4b22d308-1c8e-4ee9-9715-bd6fa4161293",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195967001",
+              "display": "Asthma"
+            }
+          ],
+          "text": "Asthma"
+        },
+        "subject": {
+          "reference": "Patient/f143262f-dc5c-4eed-8da0-365bf89897b9"
+        },
+        "onsetDateTime": "2018-03-17T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e037e5ed-b8db-4672-b42d-47cc00d4af59",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "8026695f-f8cd-488b-836d-76e2b83cfe0b",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195662009",
+              "display": "Acute viral pharyngitis (disorder)"
+            }
+          ],
+          "text": "Acute viral pharyngitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/f143262f-dc5c-4eed-8da0-365bf89897b9"
+        },
+        "onsetDateTime": "2010-09-11T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/d777a477-4c66-40a8-a013-ac6ededa4e16",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "d777a477-4c66-40a8-a013-ac6ededa4e16",
+        "name": [
+          {
+            "use": "official",
+            "family": "Okuneva707",
+            "given": [
+              "Grace48"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-754-9317",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "grace.okuneva@example.com"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2001-12-05",
+        "address": [
+          {
+            "line": [
+              "633 Main St"
+            ],
+            "city": "Lowell",
+            "state": "Massachusetts",
+            "postalCode": "01407",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:295b4715-c333-4861-9fb8-d16c2720797d",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "ec24a3c5-c754-408f-b418-8f3f8a14be62",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195662009",
+              "display": "Acute viral pharyngitis (disorder)"
+            }
+          ],
+          "text": "Acute viral pharyngitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/d777a477-4c66-40a8-a013-ac6ededa4e16"
+        },
+        "onsetDateTime": "2021-01-19T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/1ca35cfb-04fc-4d82-bd15-438552fbe43b",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1ca35cfb-04fc-4d82-bd15-438552fbe43b",
+        "name": [
+          {
+            "use": "official",
+            "family": "Schmidt332",
+            "given": [
+              "Walter473"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-471-6038",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1938-02-27",
+        "address": [
+          {
+            "line": [
+              "255 Main St"
+            ],
+            "city": "Newton",
+            "state": "Massachusetts",
+            "postalCode": "01118",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ],
+        "deceasedDateTime": "2024-01-09T08:15:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f26b4776-913e-4de2-a0c5-3cb83da9c2a9",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "7c69dee1-bb5e-4bcf-95ed-626914296c07",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "185086009",
+              "display": "Chronic obstructive bronchitis (disorder)"
+            }
+          ],
+          "text": "Chronic obstructive bronchitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/1ca35cfb-04fc-4d82-bd15-438552fbe43b"
+        },
+        "onsetDateTime": "2007-09-12T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f264accc-79ac-4b1e-a8e5-6e0c20de435d",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "8715a103-43da-4043-aa45-c2ab8cbfedb0",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "414545008",
+              "display": "Ischemic heart disease (disorder)"
+            }
+          ],
+          "text": "Ischemic heart disease (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/1ca35cfb-04fc-4d82-bd15-438552fbe43b"
+        },
+        "onsetDateTime": "2018-04-18T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/337ea2df-b09b-4a5c-badc-c32ac1590f53",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "337ea2df-b09b-4a5c-badc-c32ac1590f53",
+        "name": [
+          {
+            "use": "official",
+            "family": "Raman981",
+            "given": [
+              "Priya25"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-830-6107",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1969-08-15",
+        "address": [
+          {
+            "line": [
+              "418 Main St"
+            ],
+            "city": "Somerville",
+            "state": "Massachusetts",
+            "postalCode": "02375",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e64d1bcb-7027-43a1-9f98-7c71a65e688e",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3f76be1d-1efa-4197-b394-988f847fd9b4",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "15777000",
+              "display": "Prediabetes"
+            }
+          ],
+          "text": "Prediabetes"
+        },
+        "subject": {
+          "reference": "Patient/337ea2df-b09b-4a5c-badc-c32ac1590f53"
+        },
+        "onsetDateTime": "2012-02-15T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:3ae8cc93-8dcd-4d03-969b-666205628059",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "122c9a56-01d7-4256-b860-2ab696a402f2",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239873007",
+              "display": "Osteoarthritis of knee"
+            }
+          ],
+          "text": "Osteoarthritis of knee"
+        },
+        "subject": {
+          "reference": "Patient/337ea2df-b09b-4a5c-badc-c32ac1590f53"
+        },
+        "onsetDateTime": "2006-04-11T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/5496f63c-dc11-40c1-880a-adfbe7c99b26",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "5496f63c-dc11-40c1-880a-adfbe7c99b26",
+        "name": [
+          {
+            "use": "official",
+            "family": "Kertzmann286",
+            "given": [
+              "Tomas612"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [],
+        "gender": "male",
+        "birthDate": "1973-05-11",
+        "address": [
+          {
+            "line": [
+              "82 Main St"
+            ],
+            "city": "Brockton",
+            "state": "Massachusetts",
+            "postalCode": "02052",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7c441fe7-ab42-40a7-874a-493b3ceddf2d",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "b92da22b-21df-406f-8a0b-3c3336d8393a",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/5496f63c-dc11-40c1-880a-adfbe7c99b26"
+        },
+        "onsetDateTime": "2023-08-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "683514f2-ceb8-4f9d-b914-c120c8dcd19f",
+        "name": [
+          {
+            "use": "official",
+            "family": "Wolff180",
+            "given": [
+              "Ashley34"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-294-2545",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1995-10-19",
+        "address": [
+          {
+            "line": [
+              "109 Main St"
+            ],
+            "city": "Salem",
+            "state": "Massachusetts",
+            "postalCode": "02349",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:693dffbc-6c6f-4611-9ab3-3edf6e595ed3",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0dde29a6-baa4-471a-9d24-67ac778eedb3",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160903007",
+              "display": "Full-time employment (finding)"
+            }
+          ],
+          "text": "Full-time employment (finding)"
+        },
+        "subject": {
+          "reference": "Patient/683514f2-ceb8-4f9d-b914-c120c8dcd19f"
+        },
+        "onsetDateTime": "2008-01-16T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:dc96925e-ccf3-4171-96dc-8907ba6c34ab",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "30b187ef-310c-4c00-bfa7-f1041bf90e27",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "444814009",
+              "display": "Viral sinusitis (disorder)"
+            }
+          ],
+          "text": "Viral sinusitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/683514f2-ceb8-4f9d-b914-c120c8dcd19f"
+        },
+        "onsetDateTime": "2022-08-12T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/766ecb15-474e-4c19-aef9-12766c006f61",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "766ecb15-474e-4c19-aef9-12766c006f61",
+        "name": [
+          {
+            "use": "official",
+            "family": "Okafor62",
+            "given": [
+              "Robert854"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-355-2235",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1958-07-03",
+        "address": [
+          {
+            "line": [
+              "463 Main St"
+            ],
+            "city": "Fall River",
+            "state": "Massachusetts",
+            "postalCode": "02654",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:19108be5-8ce2-4ea3-9b20-a56edc815fe7",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "8a63f881-ffd0-49d5-a6f2-f7b80cf35b58",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "44054006",
+              "display": "Diabetes mellitus type 2 (disorder)"
+            }
+          ],
+          "text": "Diabetes mellitus type 2 (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/766ecb15-474e-4c19-aef9-12766c006f61"
+        },
+        "onsetDateTime": "2005-02-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:7b3a4e3e-7c52-4a17-a80a-c07a2a935d62",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "e7067ef4-66aa-4385-9d59-ba7136b82481",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/766ecb15-474e-4c19-aef9-12766c006f61"
+        },
+        "onsetDateTime": "2006-03-16T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:43e458fc-63f2-4e24-bc3d-3348008d4127",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "747b6dba-c8fe-4ccd-88b8-d9c6ed3049cf",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239873007",
+              "display": "Osteoarthritis of knee"
+            }
+          ],
+          "text": "Osteoarthritis of knee"
+        },
+        "subject": {
+          "reference": "Patient/766ecb15-474e-4c19-aef9-12766c006f61"
+        },
+        "onsetDateTime": "2014-07-18T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/27a0c3d7-7c96-4f79-b7e9-9acaa97065e1",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "27a0c3d7-7c96-4f79-b7e9-9acaa97065e1",
+        "name": [
+          {
+            "use": "official",
+            "family": "Fischer429",
+            "given": [
+              "Emily738"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-294-5861",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "emily.fischer@example.com"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1987-03-28",
+        "address": [
+          {
+            "line": [
+              "232 Main St"
+            ],
+            "city": "Framingham",
+            "state": "Massachusetts",
+            "postalCode": "02983",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8acd4e10-bc59-4585-9445-28c00ef8c2d6",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0ea2622b-5048-47ba-bf7b-539b0f9aea4b",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195967001",
+              "display": "Asthma"
+            }
+          ],
+          "text": "Asthma"
+        },
+        "subject": {
+          "reference": "Patient/27a0c3d7-7c96-4f79-b7e9-9acaa97065e1"
+        },
+        "onsetDateTime": "2006-08-18T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/284d82e5-87f7-41fb-9a4b-d9caeb5cf467",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "284d82e5-87f7-41fb-9a4b-d9caeb5cf467",
+        "name": [
+          {
+            "use": "official",
+            "family": "Mraz590",
+            "given": [
+              "Henry17"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-158-9320",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1944-09-21",
+        "address": [
+          {
+            "line": [
+              "92 Main St"
+            ],
+            "city": "Plymouth",
+            "state": "Massachusetts",
+            "postalCode": "02743",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:1165e210-9854-4881-918a-9d292f923996",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "675dd5af-3c36-4296-9ca0-2eecacdabacc",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "414545008",
+              "display": "Ischemic heart disease (disorder)"
+            }
+          ],
+          "text": "Ischemic heart disease (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/284d82e5-87f7-41fb-9a4b-d9caeb5cf467"
+        },
+        "onsetDateTime": "2008-04-19T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:14fcdd54-9e8f-4965-8a2c-827e98326856",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "90b2b633-956b-4c0c-a849-9b926b5252e3",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "55822004",
+              "display": "Hyperlipidemia"
+            }
+          ],
+          "text": "Hyperlipidemia"
+        },
+        "subject": {
+          "reference": "Patient/284d82e5-87f7-41fb-9a4b-d9caeb5cf467"
+        },
+        "onsetDateTime": "2021-06-14T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:506e5a9a-b758-488d-ab73-295b344a54b8",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "21813d25-6552-48a6-83ff-50113d1a85dd",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "314529007",
+              "display": "Medication review due (situation)"
+            }
+          ],
+          "text": "Medication review due (situation)"
+        },
+        "subject": {
+          "reference": "Patient/284d82e5-87f7-41fb-9a4b-d9caeb5cf467"
+        },
+        "onsetDateTime": "2014-08-15T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/12922f83-ef8c-485b-807a-30f2edd4253b",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "12922f83-ef8c-485b-807a-30f2edd4253b",
+        "name": [
+          {
+            "use": "official",
+            "family": "Lopez714",
+            "given": [
+              "Sofia950"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-109-8508",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2004-02-14",
+        "address": [
+          {
+            "line": [
+              "646 Main St"
+            ],
+            "city": "Chelsea",
+            "state": "Massachusetts",
+            "postalCode": "02153",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "es"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:89a2688b-12c1-46e0-9998-5f15ff002d4d",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "21e8ac68-43e4-4caf-8181-a8cc369147eb",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195662009",
+              "display": "Acute viral pharyngitis (disorder)"
+            }
+          ],
+          "text": "Acute viral pharyngitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/12922f83-ef8c-485b-807a-30f2edd4253b"
+        },
+        "onsetDateTime": "2016-02-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:702cdd20-2862-48b8-88f4-ef125e9953d2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "4d71c366-b41b-4143-8b10-550cd5704f32",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160903007",
+              "display": "Full-time employment (finding)"
+            }
+          ],
+          "text": "Full-time employment (finding)"
+        },
+        "subject": {
+          "reference": "Patient/12922f83-ef8c-485b-807a-30f2edd4253b"
+        },
+        "onsetDateTime": "2021-01-18T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/1a84a51a-a9d3-47c7-ae87-905e4ca415ea",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1a84a51a-a9d3-47c7-ae87-905e4ca415ea",
+        "name": [
+          {
+            "use": "official",
+            "family": "Kim232",
+            "given": [
+              "Daniel400"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-999-3200",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1966-12-08",
+        "address": [
+          {
+            "line": [
+              "280 Main St"
+            ],
+            "city": "Waltham",
+            "state": "Massachusetts",
+            "postalCode": "01236",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8da01097-be0f-451b-9b66-b5a9e3c43657",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "9ad620ab-4821-4ddb-85b8-9cd927cb6f2a",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "185086009",
+              "display": "Chronic obstructive bronchitis (disorder)"
+            }
+          ],
+          "text": "Chronic obstructive bronchitis (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/1a84a51a-a9d3-47c7-ae87-905e4ca415ea"
+        },
+        "onsetDateTime": "2011-06-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:439472e6-da58-4e8a-a25d-6b29afffcfd2",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "e7c421c7-4049-4b71-bd10-6c6081627cf1",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "55822004",
+              "display": "Hyperlipidemia"
+            }
+          ],
+          "text": "Hyperlipidemia"
+        },
+        "subject": {
+          "reference": "Patient/1a84a51a-a9d3-47c7-ae87-905e4ca415ea"
+        },
+        "onsetDateTime": "2006-02-16T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/00e85ece-0b49-452d-86d4-83f3d450281c",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "00e85ece-0b49-452d-86d4-83f3d450281c",
+        "name": [
+          {
+            "use": "official",
+            "family": "Walsh345",
+            "given": [
+              "Nora81"
+            ],
+            "prefix": [
+              "Ms."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-441-3143",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1981-06-30",
+        "address": [
+          {
+            "line": [
+              "662 Main St"
+            ],
+            "city": "Medford",
+            "state": "Massachusetts",
+            "postalCode": "01536",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8d3aed99-711c-41c9-bdc1-4f1f295d6fbf",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0279b6a6-8f97-47b0-ad7c-e3c9b4a69f3c",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "239873007",
+              "display": "Osteoarthritis of knee"
+            }
+          ],
+          "text": "Osteoarthritis of knee"
+        },
+        "subject": {
+          "reference": "Patient/00e85ece-0b49-452d-86d4-83f3d450281c"
+        },
+        "onsetDateTime": "2008-02-12T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5e84f058-d5a8-44eb-8939-23de8babce3b",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "6e068097-25e9-4977-8d72-48e2951f58d0",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "15777000",
+              "display": "Prediabetes"
+            }
+          ],
+          "text": "Prediabetes"
+        },
+        "subject": {
+          "reference": "Patient/00e85ece-0b49-452d-86d4-83f3d450281c"
+        },
+        "onsetDateTime": "2009-01-14T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "https://r4.smarthealthit.org/Patient/cbceabde-eede-4b07-a623-a6895d59cd2a",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "cbceabde-eede-4b07-a623-a6895d59cd2a",
+        "name": [
+          {
+            "use": "official",
+            "family": "Haley279",
+            "given": [
+              "Victor105"
+            ],
+            "prefix": [
+              "Mr."
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-981-1653",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1952-04-17",
+        "address": [
+          {
+            "line": [
+              "930 Main St"
+            ],
+            "city": "Taunton",
+            "state": "Massachusetts",
+            "postalCode": "01732",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en-US"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:aabc25fa-3fe1-4e47-ae9b-ec3635c7936c",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "8f5486b7-c7b5-42bc-9a8a-aeca1a50aec3",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "inactive"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "431857002",
+              "display": "Chronic kidney disease stage 4 (disorder)"
+            }
+          ],
+          "text": "Chronic kidney disease stage 4 (disorder)"
+        },
+        "subject": {
+          "reference": "Patient/cbceabde-eede-4b07-a623-a6895d59cd2a"
+        },
+        "onsetDateTime": "2018-03-13T10:00:00-05:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ccc56569-f9e8-4369-a999-b735dd56cc94",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "698c206f-e1a4-4e10-ad53-4dd0cf8ebc5a",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertension"
+            }
+          ],
+          "text": "Hypertension"
+        },
+        "subject": {
+          "reference": "Patient/cbceabde-eede-4b07-a623-a6895d59cd2a"
+        },
+        "onsetDateTime": "2005-03-15T10:00:00-05:00"
+      }
+    }
+  ]
+}
