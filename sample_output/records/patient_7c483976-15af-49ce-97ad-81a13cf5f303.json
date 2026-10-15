@@ -1,0 +1,137 @@
+{
+  "recordId": "patient:7c483976-15af-49ce-97ad-81a13cf5f303",
+  "input": {
+    "id": "patient:7c483976-15af-49ce-97ad-81a13cf5f303",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/7c483976-15af-49ce-97ad-81a13cf5f303",
+    "person": {
+      "firstName": "Isaura",
+      "lastName": "Dietrich",
+      "fullName": "Isaura Dietrich"
+    },
+    "contact": {
+      "phone": "555-414-1273"
+    },
+    "location": {
+      "city": "Weston",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1924-06-16",
+      "age": 102,
+      "gender": "female",
+      "isDeceased": true,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "230690007",
+          "name": "Stroke"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "201834006",
+          "name": "Localized, primary osteoarthritis of the hand"
+        },
+        {
+          "code": "19169002",
+          "name": "Miscarriage in first trimester"
+        },
+        {
+          "code": "88805009",
+          "name": "Chronic congestive heart failure"
+        },
+        {
+          "code": "49436004",
+          "name": "Atrial Fibrillation"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:7c483976-15af-49ce-97ad-81a13cf5f303",
+        "firstName": "Isaura",
+        "lastName": "Dietrich",
+        "phone": "555-414-1273",
+        "city": "Weston",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "7c483976-15af-49ce-97ad-81a13cf5f303"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0090",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

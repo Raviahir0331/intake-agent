@@ -1,0 +1,166 @@
+{
+  "recordId": "patient:0a616e8d-e5d1-463e-af36-c2a4d4803be5",
+  "input": {
+    "id": "patient:0a616e8d-e5d1-463e-af36-c2a4d4803be5",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/0a616e8d-e5d1-463e-af36-c2a4d4803be5",
+    "person": {
+      "firstName": "Peter",
+      "lastName": "Wunsch",
+      "fullName": "Peter Wunsch"
+    },
+    "contact": {
+      "phone": "555-281-1193"
+    },
+    "location": {
+      "city": "Duxbury",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1956-04-15",
+      "age": 70,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        },
+        {
+          "code": "55822004",
+          "name": "Hyperlipidemia"
+        },
+        {
+          "code": "87433001",
+          "name": "Pulmonary emphysema"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 4,
+    "usage": {
+      "inputTokens": 3831,
+      "outputTokens": 389
+    },
+    "durationMs": 79299,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:0a616e8d-e5d1-463e-af36-c2a4d4803be5"
+        },
+        "result": {
+          "activeConditions": [
+            "Anemia",
+            "Hyperlipidemia",
+            "Pulmonary emphysema"
+          ],
+          "chronicConditions": [
+            "Hyperlipidemia",
+            "Pulmonary emphysema"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "text_reply",
+        "text": ""
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Peter, we hope you’re doing well. It’s time to schedule your next visit to keep your health on track. Please reply with a convenient date or call our office to book. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 191
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Peter, we hope you’re doing well. It’s time to schedule your next visit to keep your health on track. Please reply with a convenient date or call our office to book. Reply STOP to opt out.",
+    "rationale": "Patient has chronic conditions (Hyperlipidemia, Pulmonary emphysema) and no risk flags, so a follow‑up invitation is appropriate.",
+    "confidence": 0.96,
+    "category": "chronic_care_followup",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:0a616e8d-e5d1-463e-af36-c2a4d4803be5",
+        "firstName": "Peter",
+        "lastName": "Wunsch",
+        "phone": "555-281-1193",
+        "city": "Duxbury",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.96
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "0a616e8d-e5d1-463e-af36-c2a4d4803be5"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Peter, we hope you’re doing well. It’s time to schedule your next visit to keep your health on track. Please reply with a convenient date or call our office to book. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: Patient has chronic conditions (Hyperlipidemia, Pulmonary emphysema) and no risk flags, so a follow‑up invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0096",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

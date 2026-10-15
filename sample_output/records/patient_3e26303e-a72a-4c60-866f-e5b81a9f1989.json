@@ -1,0 +1,149 @@
+{
+  "recordId": "patient:3e26303e-a72a-4c60-866f-e5b81a9f1989",
+  "input": {
+    "id": "patient:3e26303e-a72a-4c60-866f-e5b81a9f1989",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/3e26303e-a72a-4c60-866f-e5b81a9f1989",
+    "person": {
+      "firstName": "Evelyn",
+      "lastName": "McCullough",
+      "fullName": "Evelyn McCullough"
+    },
+    "contact": {
+      "phone": "555-208-9946"
+    },
+    "location": {
+      "city": "Lowell",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1922-09-25",
+      "age": 104,
+      "gender": "female",
+      "isDeceased": true,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "127013003",
+          "name": "Diabetic renal disease"
+        },
+        {
+          "code": "237602007",
+          "name": "Metabolic syndrome X"
+        },
+        {
+          "code": "80394007",
+          "name": "Hyperglycemia"
+        },
+        {
+          "code": "302870006",
+          "name": "Hypertriglyceridemia"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "230690007",
+          "name": "Stroke"
+        },
+        {
+          "code": "44054006",
+          "name": "Diabetes"
+        },
+        {
+          "code": "368581000119106",
+          "name": "Neuropathy due to type 2 diabetes mellitus"
+        },
+        {
+          "code": "431855005",
+          "name": "Chronic kidney disease stage 1"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:3e26303e-a72a-4c60-866f-e5b81a9f1989",
+        "firstName": "Evelyn",
+        "lastName": "McCullough",
+        "phone": "555-208-9946",
+        "city": "Lowell",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "3e26303e-a72a-4c60-866f-e5b81a9f1989"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0080",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

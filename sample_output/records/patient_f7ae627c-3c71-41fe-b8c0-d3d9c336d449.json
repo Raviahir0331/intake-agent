@@ -1,0 +1,142 @@
+{
+  "recordId": "patient:f7ae627c-3c71-41fe-b8c0-d3d9c336d449",
+  "input": {
+    "id": "patient:f7ae627c-3c71-41fe-b8c0-d3d9c336d449",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/f7ae627c-3c71-41fe-b8c0-d3d9c336d449",
+    "person": {
+      "firstName": "Latosha",
+      "lastName": "Gleichner",
+      "fullName": "Latosha Gleichner"
+    },
+    "contact": {
+      "phone": "555-736-2891"
+    },
+    "location": {
+      "city": "Pittsfield",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "2004-07-20",
+      "age": 22,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": []
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 2638,
+      "outputTokens": 286
+    },
+    "durationMs": 59308,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:f7ae627c-3c71-41fe-b8c0-d3d9c336d449"
+        },
+        "result": {
+          "activeConditions": [],
+          "chronicConditions": [],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Latosha, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call our office to book. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 170
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Latosha, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call our office to book. Reply STOP to opt out.",
+    "rationale": "No risk flags or chronic conditions were found, so a routine check‑in invitation is appropriate.",
+    "confidence": 1,
+    "category": "routine_checkin",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:f7ae627c-3c71-41fe-b8c0-d3d9c336d449",
+        "firstName": "Latosha",
+        "lastName": "Gleichner",
+        "phone": "555-736-2891",
+        "city": "Pittsfield",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "routine_checkin"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "routine_checkin"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "f7ae627c-3c71-41fe-b8c0-d3d9c336d449"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Latosha, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call our office to book. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: No risk flags or chronic conditions were found, so a routine check‑in invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0088",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

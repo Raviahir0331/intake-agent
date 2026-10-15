@@ -21,7 +21,7 @@ export function isConnected(lead: LeadRecord): boolean {
 
 // Topics close to what we sell (AI receptionists / voice agents for clinics).
 const PRODUCT_TOPICS =
-  /\b(ai|receptionists?|voice|calls?|booking|scheduling|no-shows?|follow-up|front-desk|chatbot|automation|ghl|crm)\b/i;
+  /\b(ai|receptionists?|voice|calls?|booking|scheduling|no-shows?|follow-up|front-desk|chatbot|automation|ghl|crm|wait times?|retention|after-hours|multilingual)\b/i;
 
 const WARM_THRESHOLD = 50;
 

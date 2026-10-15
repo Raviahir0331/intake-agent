@@ -1,0 +1,160 @@
+{
+  "recordId": "patient:f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8",
+  "input": {
+    "id": "patient:f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8",
+    "person": {
+      "firstName": "Jules",
+      "lastName": "Marks",
+      "fullName": "Jules Marks"
+    },
+    "contact": {
+      "phone": "555-285-6575"
+    },
+    "location": {
+      "city": "Winthrop Town",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1995-06-07",
+      "age": 31,
+      "gender": "male",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "444814009",
+          "name": "Viral sinusitis"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 4,
+    "usage": {
+      "inputTokens": 3800,
+      "outputTokens": 361
+    },
+    "durationMs": 79768,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8"
+        },
+        "result": {
+          "activeConditions": [
+            "Viral sinusitis",
+            "Hypertension"
+          ],
+          "chronicConditions": [
+            "Hypertension"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "text_reply",
+        "text": ""
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Jules, we hope you’re doing well. It’s time to schedule a follow‑up visit to keep you on track with your health. Please reply to book an appointment at your convenience. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 195
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Jules, we hope you’re doing well. It’s time to schedule a follow‑up visit to keep you on track with your health. Please reply to book an appointment at your convenience. Reply STOP to opt out.",
+    "rationale": "The patient has a chronic condition (hypertension) and no risk flags, so a follow‑up invitation is appropriate.",
+    "confidence": 0.98,
+    "category": "chronic_care_followup",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8",
+        "firstName": "Jules",
+        "lastName": "Marks",
+        "phone": "555-285-6575",
+        "city": "Winthrop Town",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.98
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Jules, we hope you’re doing well. It’s time to schedule a follow‑up visit to keep you on track with your health. Please reply to book an appointment at your convenience. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: The patient has a chronic condition (hypertension) and no risk flags, so a follow‑up invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0089",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

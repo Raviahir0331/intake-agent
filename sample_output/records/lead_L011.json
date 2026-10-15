@@ -1,0 +1,142 @@
+{
+  "recordId": "lead:L011",
+  "input": {
+    "id": "lead:L011",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 12",
+    "person": {
+      "firstName": "Nina",
+      "lastName": "Patel",
+      "fullName": "Nina Patel"
+    },
+    "contact": {},
+    "location": {
+      "city": "Los Angeles",
+      "region": "CA",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Growth Manager",
+      "company": "MedSpa Collective",
+      "industry": "Medspa",
+      "companySize": "11-50",
+      "headline": "Growth manager for a multi-brand medspa collective",
+      "recentActivity": "Liked a post about AI-driven booking conversion",
+      "connectionNote": "Connected after LinkedIn ad campaign click"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 2,
+    "usage": {
+      "inputTokens": 1933,
+      "outputTokens": 209
+    },
+    "durationMs": 39724,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L011"
+        },
+        "result": {
+          "score": 51,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+8 light engagement with content",
+            "+15 activity matches what we sell",
+            "+8 influences the decision",
+            "+10 company size in our sweet spot",
+            "+10 has already engaged with us"
+          ]
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Nina, I noticed you liked our post on AI‑driven booking conversion. Would you be open to a quick call to see how an AI receptionist could boost your medspa’s appointment rates?",
+    "rationale": "Score suggests warm and the lead already engaged with relevant content, indicating interest.",
+    "confidence": 0.9,
+    "category": "warm",
+    "channel": "linkedin_message"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L011",
+        "firstName": "Nina",
+        "lastName": "Patel",
+        "companyName": "MedSpa Collective",
+        "city": "Los Angeles",
+        "state": "CA",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_message"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.9
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Growth Manager"
+          },
+          {
+            "key": "industry",
+            "field_value": "Medspa"
+          },
+          {
+            "key": "company_size",
+            "field_value": "11-50"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 51
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_message",
+        "language": "en",
+        "message": "Hi Nina, I noticed you liked our post on AI‑driven booking conversion. Would you be open to a quick call to see how an AI receptionist could boost your medspa’s appointment rates?"
+      },
+      "note": {
+        "body": "Agent: Score suggests warm and the lead already engaged with relevant content, indicating interest."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0009",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

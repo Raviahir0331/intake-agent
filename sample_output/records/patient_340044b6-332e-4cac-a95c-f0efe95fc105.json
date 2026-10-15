@@ -1,0 +1,142 @@
+{
+  "recordId": "patient:340044b6-332e-4cac-a95c-f0efe95fc105",
+  "input": {
+    "id": "patient:340044b6-332e-4cac-a95c-f0efe95fc105",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/340044b6-332e-4cac-a95c-f0efe95fc105",
+    "person": {
+      "firstName": "Nicholle",
+      "lastName": "Crist",
+      "fullName": "Nicholle Crist"
+    },
+    "contact": {
+      "phone": "555-782-7394"
+    },
+    "location": {
+      "city": "Boston",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "2003-04-24",
+      "age": 23,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": []
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 2610,
+      "outputTokens": 251
+    },
+    "durationMs": 59547,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:340044b6-332e-4cac-a95c-f0efe95fc105"
+        },
+        "result": {
+          "activeConditions": [],
+          "chronicConditions": [],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Nicholle, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call us to book. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 163
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Nicholle, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call us to book. Reply STOP to opt out.",
+    "rationale": "No risk flags or chronic conditions; a routine check‑in invitation is appropriate.",
+    "confidence": 0.99,
+    "category": "routine_checkin",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:340044b6-332e-4cac-a95c-f0efe95fc105",
+        "firstName": "Nicholle",
+        "lastName": "Crist",
+        "phone": "555-782-7394",
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "routine_checkin"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "routine_checkin"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.99
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "340044b6-332e-4cac-a95c-f0efe95fc105"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Nicholle, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call us to book. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: No risk flags or chronic conditions; a routine check‑in invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0079",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

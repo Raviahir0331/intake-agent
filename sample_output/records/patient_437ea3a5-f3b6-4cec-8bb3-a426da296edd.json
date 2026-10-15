@@ -1,0 +1,157 @@
+{
+  "recordId": "patient:437ea3a5-f3b6-4cec-8bb3-a426da296edd",
+  "input": {
+    "id": "patient:437ea3a5-f3b6-4cec-8bb3-a426da296edd",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/437ea3a5-f3b6-4cec-8bb3-a426da296edd",
+    "person": {
+      "firstName": "Rory",
+      "lastName": "Schulist",
+      "fullName": "Rory Schulist"
+    },
+    "contact": {
+      "phone": "555-255-1705"
+    },
+    "location": {
+      "city": "Chicopee",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1958-10-18",
+      "age": 67,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "19169002",
+          "name": "Miscarriage in first trimester"
+        },
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "fallback",
+    "promptVersion": "patient-v2",
+    "llmCalls": 2,
+    "usage": {
+      "inputTokens": 1654,
+      "outputTokens": 150
+    },
+    "durationMs": 469147,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:437ea3a5-f3b6-4cec-8bb3-a426da296edd"
+        },
+        "result": {
+          "activeConditions": [
+            "Prediabetes"
+          ],
+          "chronicConditions": [
+            "Prediabetes"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 1,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Rory, we hope you're well. It’s time to schedule a follow‑up visit for your health. Please reply to this message or call our clinic to book an appointment. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 181
+        }
+      }
+    ]
+  },
+  "decision": {
+    "category": "chronic_care_followup",
+    "channel": "care_team_review",
+    "escalate": true,
+    "tone": "internal",
+    "language": "en",
+    "message": "Agent could not finish this patient (LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198964, Requested 1373. Please try again in 2m25.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing). Please review manually.",
+    "rationale": "Fallback: LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198964, Requested 1373. Please try again in 2m25.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+    "confidence": 0
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:437ea3a5-f3b6-4cec-8bb3-a426da296edd",
+        "firstName": "Rory",
+        "lastName": "Schulist",
+        "phone": "555-255-1705",
+        "city": "Chicopee",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup",
+          "needs-human",
+          "agent-fallback"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "care_team_review"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0
+          },
+          {
+            "key": "decided_by",
+            "field_value": "fallback"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "437ea3a5-f3b6-4cec-8bb3-a426da296edd"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Fallback: LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198964, Requested 1373. Please try again in 2m25.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\n\nBrief: Agent could not finish this patient (LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198964, Requested 1373. Please try again in 2m25.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing). Please review manually."
+      },
+      "task": {
+        "title": "Review Rory Schulist: agent could not decide",
+        "assignedTo": "care_team",
+        "dueInHours": 24
+      }
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0102",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

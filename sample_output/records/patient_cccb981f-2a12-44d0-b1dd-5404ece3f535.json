@@ -1,0 +1,157 @@
+{
+  "recordId": "patient:cccb981f-2a12-44d0-b1dd-5404ece3f535",
+  "input": {
+    "id": "patient:cccb981f-2a12-44d0-b1dd-5404ece3f535",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/cccb981f-2a12-44d0-b1dd-5404ece3f535",
+    "person": {
+      "firstName": "Wendell",
+      "lastName": "Lesch",
+      "fullName": "Wendell Lesch"
+    },
+    "contact": {
+      "phone": "555-291-6189"
+    },
+    "location": {
+      "city": "New Bedford",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1938-04-09",
+      "age": 88,
+      "gender": "male",
+      "isDeceased": true,
+      "language": "pt",
+      "conditions": [
+        {
+          "code": "82423001",
+          "name": "Chronic pain"
+        },
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        },
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "232353008",
+          "name": "Perennial allergic rhinitis with seasonal variation"
+        },
+        {
+          "code": "124171000119105",
+          "name": "Chronic intractable migraine without aura"
+        },
+        {
+          "code": "55680006",
+          "name": "Drug overdose"
+        },
+        {
+          "code": "713197008",
+          "name": "Recurrent rectal polyp"
+        },
+        {
+          "code": "109838007",
+          "name": "Overlapping malignant neoplasm of colon"
+        },
+        {
+          "code": "68496003",
+          "name": "Polyp of colon"
+        },
+        {
+          "code": "196416002",
+          "name": "Impacted molars"
+        },
+        {
+          "code": "64859006",
+          "name": "Osteoporosis"
+        },
+        {
+          "code": "55822004",
+          "name": "Hyperlipidemia"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:cccb981f-2a12-44d0-b1dd-5404ece3f535",
+        "firstName": "Wendell",
+        "lastName": "Lesch",
+        "phone": "555-291-6189",
+        "city": "New Bedford",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "cccb981f-2a12-44d0-b1dd-5404ece3f535"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0081",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

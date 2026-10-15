@@ -1,0 +1,154 @@
+{
+  "recordId": "lead:L016",
+  "input": {
+    "id": "lead:L016",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 17",
+    "person": {
+      "firstName": "Michael",
+      "lastName": "Duran",
+      "fullName": "Michael Duran"
+    },
+    "contact": {},
+    "location": {
+      "city": "San Antonio",
+      "region": "TX",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Owner",
+      "company": "Duran Dental Studio",
+      "industry": "Dental",
+      "companySize": "1-10",
+      "headline": "Owner-dentist, single practice, very active on LinkedIn",
+      "recentActivity": "Liked 3 posts about dental practice marketing this month",
+      "connectionNote": "Connected via mutual dental association group"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3310,
+      "outputTokens": 527
+    },
+    "durationMs": 59667,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L016"
+        },
+        "result": {
+          "score": 43,
+          "suggestedTier": "cold",
+          "reasons": [
+            "+8 light engagement with content",
+            "+15 decision maker",
+            "+5 company size outside our sweet spot",
+            "+15 mutual connection"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_message",
+          "message": "Hi Michael, I see you’re active in dental practice marketing and we share a dental association group. Would love to connect and share insights."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 143
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Michael, I see you’re active in dental practice marketing and we share a dental association group. Would love to connect and share insights.",
+    "rationale": "Score suggests cold and no direct buying signal; the lead is only lightly engaged, so a low‑pressure LinkedIn message is appropriate.",
+    "confidence": 0.78,
+    "category": "cold",
+    "channel": "linkedin_message"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L016",
+        "firstName": "Michael",
+        "lastName": "Duran",
+        "companyName": "Duran Dental Studio",
+        "city": "San Antonio",
+        "state": "TX",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "cold"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "cold"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_message"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.78
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Owner"
+          },
+          {
+            "key": "industry",
+            "field_value": "Dental"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 43
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_message",
+        "language": "en",
+        "message": "Hi Michael, I see you’re active in dental practice marketing and we share a dental association group. Would love to connect and share insights."
+      },
+      "note": {
+        "body": "Agent: Score suggests cold and no direct buying signal; the lead is only lightly engaged, so a low‑pressure LinkedIn message is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0014",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

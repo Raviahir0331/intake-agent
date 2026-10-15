@@ -39,6 +39,19 @@ describe("lead scoring", () => {
     expect(score.reasons).toContain("+25 warm introduction");
   });
 
+  it("counts wait times, retention, after-hours and multilingual as our topics", () => {
+    for (const recentActivity of [
+      "Shared a post about reducing patient wait times",
+      "Shared an article on patient retention strategies",
+      "Commented on a post about after-hours coverage",
+      "Commented asking about multilingual receptionists",
+    ]) {
+      expect(scoreLead(makeLead({ recentActivity })).reasons).toContain(
+        "+15 activity matches what we sell",
+      );
+    }
+  });
+
   it("scores a dormant cold profile as cold", () => {
     const score = scoreLead(
       makeLead({

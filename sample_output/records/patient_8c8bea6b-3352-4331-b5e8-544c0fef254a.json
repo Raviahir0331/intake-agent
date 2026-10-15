@@ -1,0 +1,129 @@
+{
+  "recordId": "patient:8c8bea6b-3352-4331-b5e8-544c0fef254a",
+  "input": {
+    "id": "patient:8c8bea6b-3352-4331-b5e8-544c0fef254a",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/8c8bea6b-3352-4331-b5e8-544c0fef254a",
+    "person": {
+      "firstName": "Sal",
+      "lastName": "Strosin",
+      "fullName": "Sal Strosin"
+    },
+    "contact": {
+      "phone": "555-317-6139"
+    },
+    "location": {
+      "city": "Boston",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1939-01-27",
+      "age": 87,
+      "gender": "male",
+      "isDeceased": true,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "64859006",
+          "name": "Osteoporosis"
+        },
+        {
+          "code": "40055000",
+          "name": "Chronic sinusitis"
+        },
+        {
+          "code": "88805009",
+          "name": "Chronic congestive heart failure"
+        },
+        {
+          "code": "55822004",
+          "name": "Hyperlipidemia"
+        },
+        {
+          "code": "201834006",
+          "name": "Localized, primary osteoarthritis of the hand"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:8c8bea6b-3352-4331-b5e8-544c0fef254a",
+        "firstName": "Sal",
+        "lastName": "Strosin",
+        "phone": "555-317-6139",
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "8c8bea6b-3352-4331-b5e8-544c0fef254a"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0083",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

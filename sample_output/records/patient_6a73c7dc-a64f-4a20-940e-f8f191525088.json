@@ -1,0 +1,142 @@
+{
+  "recordId": "patient:6a73c7dc-a64f-4a20-940e-f8f191525088",
+  "input": {
+    "id": "patient:6a73c7dc-a64f-4a20-940e-f8f191525088",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/6a73c7dc-a64f-4a20-940e-f8f191525088",
+    "person": {
+      "firstName": "Veta",
+      "lastName": "Nitzsche",
+      "fullName": "Veta Nitzsche"
+    },
+    "contact": {
+      "phone": "555-297-5782"
+    },
+    "location": {
+      "city": "Westfield",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1970-11-04",
+      "age": 55,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": []
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 2622,
+      "outputTokens": 270
+    },
+    "durationMs": 60173,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:6a73c7dc-a64f-4a20-940e-f8f191525088"
+        },
+        "result": {
+          "activeConditions": [],
+          "chronicConditions": [],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Veta, we hope you're doing well! It's time to schedule your routine check‑up. Please reply to book an appointment. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 140
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Veta, we hope you're doing well! It's time to schedule your routine check‑up. Please reply to book an appointment. Reply STOP to opt out.",
+    "rationale": "Patient has no risk flags or chronic conditions, so a routine check‑in invitation is appropriate.",
+    "confidence": 0.99,
+    "category": "routine_checkin",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:6a73c7dc-a64f-4a20-940e-f8f191525088",
+        "firstName": "Veta",
+        "lastName": "Nitzsche",
+        "phone": "555-297-5782",
+        "city": "Westfield",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "routine_checkin"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "routine_checkin"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.99
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "6a73c7dc-a64f-4a20-940e-f8f191525088"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Veta, we hope you're doing well! It's time to schedule your routine check‑up. Please reply to book an appointment. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: Patient has no risk flags or chronic conditions, so a routine check‑in invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0099",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

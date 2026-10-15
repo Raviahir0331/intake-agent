@@ -41,8 +41,27 @@ export function checkLeadMessage(
     problems.push("remove statistics or percentages; we can't back them up for this lead");
   }
   if (/guarantee/i.test(message)) problems.push("don't promise guaranteed results");
+  if (hasSignOff(message)) {
+    problems.push(
+      "remove the sign-off and sender name; the rep sends this from their own LinkedIn account",
+    );
+  }
 
   return problems;
+}
+
+// "Best,", "Thanks,\nAlex", "Cordialement" on their own line at the end. Left alone, models sign
+// with a placeholder ("[Your Name]") and, once told off, with a made-up name.
+const SIGN_OFF =
+  /^(best|thanks|thank you|many thanks|regards|best regards|kind regards|warm regards|cheers|sincerely|cordialement|merci|bien à vous|saludos)\b/i;
+
+function hasSignOff(message: string): boolean {
+  const lines = message
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  // A short line, so a closing sentence like "Thanks for sharing that post." still passes.
+  return lines.slice(-2).some((line) => line.length <= 40 && SIGN_OFF.test(line));
 }
 
 export function checkPatientMessage(

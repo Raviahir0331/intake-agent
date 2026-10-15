@@ -8,7 +8,7 @@ with a reason, so everything downstream can trust its input.
 
 The decision stage is a single agent loop with two profiles (lead and patient). Each profile
 defines its own tools, prompt, hard rules and fallback. Clear-cut cases (inbound requests,
-deceased patients, no contact details) are decided by rules before the LLM is involved. For
+deceased patients, no contact details, minors, patients aged 90+) are decided by rules before the LLM is involved. For
 everything else the model gathers evidence through tools, drafts a message, checks it, and
 submits. The submission is validated in code against the schema and the business rules, and
 rejected decisions go back to the model with the reasons. If it still can't produce a valid
@@ -16,6 +16,14 @@ decision, or the LLM is down, the record goes to a human. A record is never lost
 unchecked.
 
 Delivery is an idempotent upsert keyed on the record id, so retries and re-runs are safe.
+
+**Why TypeScript when Python was preferred.** The brief prefers Python but leaves the choice
+open. I used TypeScript because the same zod schemas define the unified record, validate the
+agent's decision, and enforce the CRM contract on both the client and the mock CRM, so the
+contract lives in one place and the compiler checks every hand-off between stages. The mock CRM
+(Express) and the pipeline share those types in one codebase. Nothing in the design depends on
+the language: it maps one to one onto Python with pydantic for the schemas, FastAPI or Flask for
+the mock CRM, and the `openai` package for the same OpenAI-compatible agent loop.
 
 ## Handling 10,000 records or patients a day
 
@@ -28,9 +36,9 @@ cost and reliability are. What I would change:
 - **One shared rate limiter** (a token bucket in Redis) instead of the in-process one, on a paid
   tier sized from measured usage. `run_report.json` already reports calls and tokens per record,
   which is the input for that sizing.
-- **Spend LLM calls only where judgment is needed.** Today about 15% of records are decided by
-  rules. Add caching by content hash so unchanged records aren't re-processed, and route by
-  difficulty: a small model for routine patients, a larger one for ambiguous leads.
+- **Spend LLM calls only where judgment is needed.** In the sample run 16 of 48
+  records (a third) are decided by rules. Add caching by content hash so unchanged records aren't
+  re-processed, and route by difficulty: a small model for routine patients, a larger one for ambiguous leads.
 - **Incremental FHIR loads.** Use `_lastUpdated` for daily deltas, and Bulk Data `$export` for
   large backfills instead of paging through search results.
 - **Monitoring.** Ship traces to a log store and alert on fallback rate, policy-rejection rate,
@@ -42,8 +50,10 @@ cost and reliability are. What I would change:
   Business Associate Agreement. Free AI Studio keys are not covered, so real PHI would go through
   an enterprise offering under a BAA (for example Vertex AI) or a self-hosted model.
 - **Minimum necessary.** The model already sees only first name, age band, gender, language and
-  active conditions, never last name, birth date, address or phone. The next step would be mapping
-  conditions to broad categories before they reach the model.
+  active conditions, never last name, birth date, address or phone. Sensitive history
+  (reproductive, mental health, substance use) is left out of its view entirely unless it is a
+  risk flag. The next step would be mapping conditions to broad categories before they reach the
+  model.
 - **Logs and traces.** Today's traces store the full synthetic record. In production they would be
   redacted, encrypted at rest, access controlled, retained for a defined period, and every access
   audited.

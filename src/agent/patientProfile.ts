@@ -7,7 +7,7 @@ import {
   submitDecisionTool,
   type AgentProfile,
 } from "./agentProfile";
-import { ageBand, buildCareSummary, likelyCategory } from "./careSummary";
+import { ageBand, buildCareSummary, likelyCategory, type CareSummary } from "./careSummary";
 import {
   PATIENT_CATEGORIES,
   PATIENT_CHANNELS,
@@ -18,6 +18,27 @@ import { checkPatientMessage } from "./messagePolicy";
 import { PATIENT_PROMPT_VERSION, PATIENT_SYSTEM_PROMPT } from "./prompts/patientPrompt";
 
 const checkMessageArgs = z.object({ channel: z.enum(PATIENT_CHANNELS), message: z.string() });
+
+const MINOR_UNDER = 18;
+const PHONE_CALL_FROM = 90;
+
+/** A person at the clinic makes this contact. The category still reflects the clinical picture. */
+function frontDeskHandoff(
+  summary: CareSummary,
+  message: string,
+  rationale: string,
+): PatientDecision {
+  return {
+    category: likelyCategory(summary),
+    channel: "care_team_review",
+    escalate: true,
+    tone: "internal",
+    language: "en",
+    message,
+    rationale,
+    confidence: 1,
+  };
+}
 
 export const patientProfile: AgentProfile<PatientRecord, PatientDecision> = {
   promptVersion: PATIENT_PROMPT_VERSION,
@@ -46,7 +67,8 @@ export const patientProfile: AgentProfile<PatientRecord, PatientDecision> = {
       };
     }
 
-    if (buildCareSummary(record).contactOptions.length === 0) {
+    const summary = buildCareSummary(record);
+    if (summary.contactOptions.length === 0) {
       return {
         category: "routine_checkin",
         channel: "care_team_review",
@@ -57,6 +79,22 @@ export const patientProfile: AgentProfile<PatientRecord, PatientDecision> = {
         rationale: "Rule: there is no channel we can use to reach this patient.",
         confidence: 1,
       };
+    }
+
+    const { age } = record.patient;
+    if (age < MINOR_UNDER) {
+      return frontDeskHandoff(
+        summary,
+        `Patient is ${age}. Contact the parent or guardian on file, not the patient.`,
+        `Rule: patients under ${MINOR_UNDER} are contacted through a parent or guardian.`,
+      );
+    }
+    if (age >= PHONE_CALL_FROM) {
+      return frontDeskHandoff(
+        summary,
+        `Patient is ${age}. Front desk to call rather than text, and include any caregiver on file.`,
+        `Rule: patients aged ${PHONE_CALL_FROM}+ get a phone call from the front desk, not an automated text.`,
+      );
     }
 
     return null;

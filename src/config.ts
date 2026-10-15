@@ -9,7 +9,7 @@ const envSchema = z.object({
   LLM_REQUESTS_PER_MINUTE: z.coerce.number().positive().default(8),
 
   FHIR_BASE_URL: z.url().default("https://r4.smarthealthit.org"),
-  PATIENT_COUNT: z.coerce.number().int().min(1).max(200).default(20),
+  PATIENT_COUNT: z.coerce.number().int().min(1).max(200).default(30),
 
   CRM_URL: z.url().optional(),
   CRM_PORT: z.coerce.number().int().default(4010),

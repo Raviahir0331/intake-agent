@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L003",
+  "input": {
+    "id": "lead:L003",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 4",
+    "person": {
+      "firstName": "Priya",
+      "lastName": "Nair",
+      "fullName": "Priya Nair"
+    },
+    "contact": {},
+    "location": {
+      "city": "Toronto",
+      "region": "ON",
+      "country": "CA"
+    },
+    "lead": {
+      "jobTitle": "Director of Operations",
+      "company": "Sunrise Physiotherapy",
+      "industry": "Healthcare",
+      "companySize": "51-200",
+      "headline": "Ops leader scaling physio clinics across Ontario",
+      "recentActivity": "Shared an article about patient no-show rates",
+      "connectionNote": "Mutual connection: former colleague"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3109,
+      "outputTokens": 339
+    },
+    "durationMs": 54801,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L003"
+        },
+        "result": {
+          "score": 63,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+8 light engagement with content",
+            "+15 activity matches what we sell",
+            "+15 decision maker",
+            "+10 company size in our sweet spot",
+            "+15 mutual connection"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Priya, I saw you shared the article on patient no‑show rates – a challenge many physio clinics face. I'd love to connect and exchange ideas on improving attendance."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 167
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Priya, I saw you shared the article on patient no‑show rates – a challenge many physio clinics face. I'd love to connect and exchange ideas on improving attendance.",
+    "rationale": "Warm lead with mutual connection and relevant content share; no direct buying signal yet, so a connection request is appropriate.",
+    "confidence": 0.88,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L003",
+        "firstName": "Priya",
+        "lastName": "Nair",
+        "companyName": "Sunrise Physiotherapy",
+        "city": "Toronto",
+        "state": "ON",
+        "country": "CA",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.88
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Director of Operations"
+          },
+          {
+            "key": "industry",
+            "field_value": "Healthcare"
+          },
+          {
+            "key": "company_size",
+            "field_value": "51-200"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 63
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Priya, I saw you shared the article on patient no‑show rates – a challenge many physio clinics face. I'd love to connect and exchange ideas on improving attendance."
+      },
+      "note": {
+        "body": "Agent: Warm lead with mutual connection and relevant content share; no direct buying signal yet, so a connection request is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0035",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

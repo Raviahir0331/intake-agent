@@ -1,0 +1,157 @@
+{
+  "recordId": "patient:e86e9cae-89a3-44bf-9033-32a2d56f5113",
+  "input": {
+    "id": "patient:e86e9cae-89a3-44bf-9033-32a2d56f5113",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/e86e9cae-89a3-44bf-9033-32a2d56f5113",
+    "person": {
+      "firstName": "Tracey",
+      "lastName": "Witting",
+      "fullName": "Tracey Witting"
+    },
+    "contact": {
+      "phone": "555-184-7087"
+    },
+    "location": {
+      "city": "New Bedford",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1938-04-09",
+      "age": 88,
+      "gender": "male",
+      "isDeceased": true,
+      "language": "pt",
+      "conditions": [
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        },
+        {
+          "code": "82423001",
+          "name": "Chronic pain"
+        },
+        {
+          "code": "230690007",
+          "name": "Stroke"
+        },
+        {
+          "code": "449868002",
+          "name": "Smokes tobacco daily"
+        },
+        {
+          "code": "64859006",
+          "name": "Osteoporosis"
+        },
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "55680006",
+          "name": "Drug overdose"
+        },
+        {
+          "code": "124171000119105",
+          "name": "Chronic intractable migraine without aura"
+        },
+        {
+          "code": "230265002",
+          "name": "Familial Alzheimer's disease of early onset"
+        },
+        {
+          "code": "233604007",
+          "name": "Pneumonia"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "196416002",
+          "name": "Impacted molars"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:e86e9cae-89a3-44bf-9033-32a2d56f5113",
+        "firstName": "Tracey",
+        "lastName": "Witting",
+        "phone": "555-184-7087",
+        "city": "New Bedford",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "e86e9cae-89a3-44bf-9033-32a2d56f5113"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0104",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

@@ -5,7 +5,7 @@
   "description": "AI agent that ingests leads (CSV) and patients (FHIR R4), decides outreach, and delivers to a mock CRM.",
   "type": "module",
   "engines": {
-    "node": ">=20.12"
+    "node": ">=22.13"
   },
   "scripts": {
     "pipeline": "tsx src/cli.ts",

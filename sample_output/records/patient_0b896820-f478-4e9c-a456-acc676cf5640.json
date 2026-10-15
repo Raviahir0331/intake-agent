@@ -1,0 +1,117 @@
+{
+  "recordId": "patient:0b896820-f478-4e9c-a456-acc676cf5640",
+  "input": {
+    "id": "patient:0b896820-f478-4e9c-a456-acc676cf5640",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/0b896820-f478-4e9c-a456-acc676cf5640",
+    "person": {
+      "firstName": "Terrance",
+      "lastName": "Hahn",
+      "fullName": "Terrance Hahn"
+    },
+    "contact": {
+      "phone": "555-584-6453"
+    },
+    "location": {
+      "city": "Salem",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1958-04-07",
+      "age": 68,
+      "gender": "male",
+      "isDeceased": true,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "53741008",
+          "name": "Coronary Heart Disease"
+        },
+        {
+          "code": "22298006",
+          "name": "Myocardial Infarction"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:0b896820-f478-4e9c-a456-acc676cf5640",
+        "firstName": "Terrance",
+        "lastName": "Hahn",
+        "phone": "555-584-6453",
+        "city": "Salem",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "0b896820-f478-4e9c-a456-acc676cf5640"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0082",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

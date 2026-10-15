@@ -13,7 +13,7 @@ FHIR R4 sandbox ─┘        │                                 │           
 
 ## Quick start
 
-Requires Node 20.12 or newer.
+Requires Node 22.13 or newer (Node 22 LTS or 24 LTS).
 
 ```bash
 npm install
@@ -29,6 +29,11 @@ Get a free Gemini key at [aistudio.google.com/apikey](https://aistudio.google.co
 free tier is rate limited, so `LLM_REQUESTS_PER_MINUTE` (default 8) spaces calls out. A full run
 makes roughly 90 LLM calls, which takes about 12 minutes at that rate. Raise it if your quota allows.
 
+On Groq's free tier the binding limit is tokens per minute, not requests: `openai/gpt-oss-120b`
+allows 8,000 TPM and an agent call uses about 1k tokens, so set `LLM_REQUESTS_PER_MINUTE=6` (and
+`RECORD_CONCURRENCY=1` or `2`). A full run is ~100 calls and ~110k tokens, which also counts against
+Groq's daily token cap.
+
 ## Commands
 
 | Command                     | What it does                                                                      |
@@ -40,6 +45,21 @@ makes roughly 90 LLM calls, which takes about 12 minutes at that rate. Raise it 
 | `npm run eval`              | Compare lead tiers from the latest run with `data/expected_lead_tiers.json`       |
 | `npm run save-sample`       | Copy the latest run into `sample_output/` for the submission                      |
 | `npm run check`             | Typecheck, lint and tests                                                         |
+
+## Sample output
+
+`sample_output/` is a full live run (`npm run pipeline:failures`) on Groq with `openai/gpt-oss-120b`:
+18 leads and 30 SMART sandbox patients, all 48 delivered to the mock CRM, 4 bad records rejected at
+ingest, 16 decided by rules and 29 by the agent, 102 LLM calls (~111k tokens, 3.2 calls per agent
+record). `npm run eval` on it agrees with the hand-labelled lead tiers on 17 of 18.
+
+The run used up Groq's free daily token cap near the end, so 3 patients went to the fallback path:
+the LLM kept answering 429 after the retries, and each record was handed to a person with the
+reason in its note instead of being dropped. Their traces show the error.
+
+- `sample_output/run_report.json`: totals, LLM usage and one row per record
+- `sample_output/records/<recordId>.json`: input → every tool call → final decision and rationale →
+  the CRM request and its response (the confirmation it reached the CRM)
 
 ## Project layout
 
@@ -77,19 +97,24 @@ For each record:
 
 1. **Rules first.** Some cases have one right answer and don't need an LLM. A lead who asked for a
    demo, pricing or a call goes straight to sales. A deceased patient is never contacted. A
-   patient with no phone or email goes to the front desk.
+   patient with no phone or email goes to the front desk, a patient under 18 is contacted through
+   a guardian, and a patient aged 90+ gets a phone call from the front desk instead of a text.
 2. **Agent loop.** The model gets a short description of the record and calls tools:
    - `get_lead_score` / `get_care_summary` to fetch evidence
    - `check_message` to test a draft against the sending rules
    - `submit_decision` to finish
 3. **Validation and self-correction.** `submit_decision` is checked against the zod schema _and_
-   the business rules (for example: no direct LinkedIn message unless we're connected, any risk
-   flag means clinical review, no condition names in an SMS). Problems go back to the model as the
+   the business rules (for example: no direct LinkedIn message unless we're connected, no
+   sign-off or invented sender name on lead messages, any risk flag (including dementia) means
+   clinical review, no condition names in an SMS). Problems go back to the model as the
    tool result, and it tries again.
 4. **Fallback.** If there's still no valid decision after 6 steps, or the LLM is unavailable after
    retries, the record goes to a human with a note explaining why. Nothing is dropped.
 
-A typical agent record takes three LLM calls. Every step is saved in the record's trace file.
+A typical agent record takes three LLM calls. The prompts ask for tool calls only, because a
+plain-text reply costs a round trip. `tool_choice: "required"` would enforce it, but Groq's
+gpt-oss then fails the whole request with a 400 whenever the model writes text, so the loop nudges
+instead. Every step is saved in the record's trace file.
 
 ## The unified record
 
@@ -128,7 +153,8 @@ same contact instead of creating duplicates. Contacts land in `output/crm/contac
 | Mock CRM answers the first two upserts too slowly                                   | The client times out after 2s, backs off and retries. The slow server still writes the contact later, and the upsert key stops it from duplicating |
 
 Also handled without flags: FHIR and LLM 429/5xx/timeouts are retried with exponential backoff
-(each attempt is logged), the free-tier rate limit is respected up front, and if the FHIR server is
+(each attempt is logged; a 429 waits for the server's `retry-after` or "try again in Xs" hint instead,
+and LLM calls get up to 8 attempts on 429s), the free-tier rate limit is respected up front, and if the FHIR server is
 down entirely the run continues with the leads.
 
 ## Observability

@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L008",
+  "input": {
+    "id": "lead:L008",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 9",
+    "person": {
+      "firstName": "Samuel",
+      "lastName": "Okafor",
+      "fullName": "Samuel Okafor"
+    },
+    "contact": {},
+    "location": {
+      "city": "Houston",
+      "region": "TX",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Practice Owner",
+      "company": "Okafor Eye Care",
+      "industry": "Healthcare",
+      "companySize": "1-10",
+      "headline": "Optometrist and practice owner, tech-curious",
+      "recentActivity": "Shared a post about patient scheduling pain points",
+      "connectionNote": "Cold profile visit, viewed our page twice"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3112,
+      "outputTokens": 325
+    },
+    "durationMs": 59502,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L008"
+        },
+        "result": {
+          "score": 53,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+8 light engagement with content",
+            "+15 activity matches what we sell",
+            "+15 decision maker",
+            "+5 company size outside our sweet spot",
+            "+10 has already engaged with us"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Samuel, I saw your post about the challenges in patient scheduling and thought you might be interested in how AI receptionists can streamline that process. May I send you a brief 2‑minute demo?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 196
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Samuel, I saw your post about the challenges in patient scheduling and thought you might be interested in how AI receptionists can streamline that process. May I send you a brief 2‑minute demo?",
+    "rationale": "Score suggests warm and the lead shared a post about scheduling pain points, indicating relevant interest.",
+    "confidence": 0.87,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L008",
+        "firstName": "Samuel",
+        "lastName": "Okafor",
+        "companyName": "Okafor Eye Care",
+        "city": "Houston",
+        "state": "TX",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.87
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Practice Owner"
+          },
+          {
+            "key": "industry",
+            "field_value": "Healthcare"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 53
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Samuel, I saw your post about the challenges in patient scheduling and thought you might be interested in how AI receptionists can streamline that process. May I send you a brief 2‑minute demo?"
+      },
+      "note": {
+        "body": "Agent: Score suggests warm and the lead shared a post about scheduling pain points, indicating relevant interest."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0006",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

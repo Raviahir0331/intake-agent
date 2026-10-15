@@ -33,6 +33,7 @@ export function makePatient(
     phone?: string;
     email?: string;
     isDeceased?: boolean;
+    age?: number;
   } = {},
 ): PatientRecord {
   return {
@@ -45,7 +46,7 @@ export function makePatient(
     location: {},
     patient: {
       birthDate: "1970-05-01",
-      age: 56,
+      age: overrides.age ?? 56,
       gender: "female",
       isDeceased: overrides.isDeceased ?? false,
       language: "en",

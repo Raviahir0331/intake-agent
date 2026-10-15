@@ -1,6 +1,7 @@
 // Runs the mock CRM on its own, for when you want it in a separate terminal:
 //   npm run crm                  then   CRM_URL=http://localhost:4010 npm run pipeline
 //   npm run crm -- --slow 2      to make the first two requests time out
+import "../checkNodeVersion";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
 import { loadConfig } from "../config";

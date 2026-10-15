@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L002",
+  "input": {
+    "id": "lead:L002",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 3",
+    "person": {
+      "firstName": "Marcus",
+      "lastName": "Feldman",
+      "fullName": "Marcus Feldman"
+    },
+    "contact": {},
+    "location": {
+      "city": "Denver",
+      "region": "CO",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Owner",
+      "company": "Feldman Dental Group",
+      "industry": "Dental",
+      "companySize": "1-10",
+      "headline": "Owner-dentist, 3 locations, always looking to cut admin overhead",
+      "recentActivity": "Commented on a post asking for GHL recommendations",
+      "connectionNote": "No note, cold profile visit"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3205,
+      "outputTokens": 434
+    },
+    "durationMs": 50818,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L002"
+        },
+        "result": {
+          "score": 60,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+25 actively looking for a solution",
+            "+15 activity matches what we sell",
+            "+15 decision maker",
+            "+5 company size outside our sweet spot",
+            "+0 cold, no relationship yet"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Marcus, I saw your comment about looking for GHL recommendations and thought you might be interested in how AI receptionists can reduce admin overhead in dental practices. Would you connect to discuss?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 204
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Marcus, I saw your comment about looking for GHL recommendations and thought you might be interested in how AI receptionists can reduce admin overhead in dental practices. Would you connect to discuss?",
+    "rationale": "Score suggests warm and the recent comment about GHL indicates interest in automation tools that align with our AI receptionist solution.",
+    "confidence": 0.9,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L002",
+        "firstName": "Marcus",
+        "lastName": "Feldman",
+        "companyName": "Feldman Dental Group",
+        "city": "Denver",
+        "state": "CO",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.9
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Owner"
+          },
+          {
+            "key": "industry",
+            "field_value": "Dental"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 60
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Marcus, I saw your comment about looking for GHL recommendations and thought you might be interested in how AI receptionists can reduce admin overhead in dental practices. Would you connect to discuss?"
+      },
+      "note": {
+        "body": "Agent: Score suggests warm and the recent comment about GHL indicates interest in automation tools that align with our AI receptionist solution."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0001",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

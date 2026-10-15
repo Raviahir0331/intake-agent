@@ -1,0 +1,154 @@
+{
+  "recordId": "lead:L014",
+  "input": {
+    "id": "lead:L014",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 15",
+    "person": {
+      "firstName": "Anthony",
+      "lastName": "Russo",
+      "fullName": "Anthony Russo"
+    },
+    "contact": {},
+    "location": {
+      "city": "Tampa",
+      "region": "FL",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Practice Manager",
+      "company": "Russo Chiropractic",
+      "industry": "Chiropractic",
+      "companySize": "1-10",
+      "headline": "Practice manager, family-run chiropractic office",
+      "recentActivity": "No recent activity, dormant profile",
+      "connectionNote": "Cold outreach via Sales Navigator"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3019,
+      "outputTokens": 275
+    },
+    "durationMs": 60087,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L014"
+        },
+        "result": {
+          "score": 13,
+          "suggestedTier": "cold",
+          "reasons": [
+            "+0 no recent activity",
+            "+8 influences the decision",
+            "+5 company size outside our sweet spot",
+            "+0 cold, no relationship yet"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Anthony, I noticed you manage Russo Chiropractic in Tampa. I’m working with clinics to explore AI receptionists that can streamline patient intake. Would you be open to connecting?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 183
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Anthony, I noticed you manage Russo Chiropractic in Tampa. I’m working with clinics to explore AI receptionists that can streamline patient intake. Would you be open to connecting?",
+    "rationale": "Score and lack of any prior relationship or activity indicate low intent; a connection request is appropriate.",
+    "confidence": 0.92,
+    "category": "cold",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L014",
+        "firstName": "Anthony",
+        "lastName": "Russo",
+        "companyName": "Russo Chiropractic",
+        "city": "Tampa",
+        "state": "FL",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "cold"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "cold"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.92
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Practice Manager"
+          },
+          {
+            "key": "industry",
+            "field_value": "Chiropractic"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 13
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Anthony, I noticed you manage Russo Chiropractic in Tampa. I’m working with clinics to explore AI receptionists that can streamline patient intake. Would you be open to connecting?"
+      },
+      "note": {
+        "body": "Agent: Score and lack of any prior relationship or activity indicate low intent; a connection request is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0012",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

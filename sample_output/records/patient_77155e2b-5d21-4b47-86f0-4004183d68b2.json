@@ -1,0 +1,162 @@
+{
+  "recordId": "patient:77155e2b-5d21-4b47-86f0-4004183d68b2",
+  "input": {
+    "id": "patient:77155e2b-5d21-4b47-86f0-4004183d68b2",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/77155e2b-5d21-4b47-86f0-4004183d68b2",
+    "person": {
+      "firstName": "Gayla",
+      "lastName": "Ferry",
+      "fullName": "Gayla Ferry"
+    },
+    "contact": {
+      "phone": "555-605-8177"
+    },
+    "location": {
+      "city": "Holyoke",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1937-06-03",
+      "age": 89,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "19169002",
+          "name": "Miscarriage in first trimester"
+        },
+        {
+          "code": "64859006",
+          "name": "Osteoporosis"
+        },
+        {
+          "code": "53741008",
+          "name": "Coronary Heart Disease"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "239872002",
+          "name": "Osteoarthritis of hip"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "fallback",
+    "promptVersion": "patient-v2",
+    "llmCalls": 1,
+    "usage": {
+      "inputTokens": 782,
+      "outputTokens": 66
+    },
+    "durationMs": 469486,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:77155e2b-5d21-4b47-86f0-4004183d68b2"
+        },
+        "result": {
+          "activeConditions": [
+            "Osteoporosis",
+            "Coronary Heart Disease",
+            "Hypertension",
+            "Osteoarthritis of hip"
+          ],
+          "chronicConditions": [
+            "Osteoporosis",
+            "Coronary Heart Disease",
+            "Hypertension",
+            "Osteoarthritis of hip"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 1,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      }
+    ]
+  },
+  "decision": {
+    "category": "chronic_care_followup",
+    "channel": "care_team_review",
+    "escalate": true,
+    "tone": "internal",
+    "language": "en",
+    "message": "Agent could not finish this patient (LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198726, Requested 1342. Please try again in 29.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing). Please review manually.",
+    "rationale": "Fallback: LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198726, Requested 1342. Please try again in 29.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+    "confidence": 0
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:77155e2b-5d21-4b47-86f0-4004183d68b2",
+        "firstName": "Gayla",
+        "lastName": "Ferry",
+        "phone": "555-605-8177",
+        "city": "Holyoke",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup",
+          "needs-human",
+          "agent-fallback"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "care_team_review"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0
+          },
+          {
+            "key": "decided_by",
+            "field_value": "fallback"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "77155e2b-5d21-4b47-86f0-4004183d68b2"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Fallback: LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198726, Requested 1342. Please try again in 29.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\n\nBrief: Agent could not finish this patient (LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198726, Requested 1342. Please try again in 29.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing). Please review manually."
+      },
+      "task": {
+        "title": "Review Gayla Ferry: agent could not decide",
+        "assignedTo": "care_team",
+        "dueInHours": 24
+      }
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0106",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

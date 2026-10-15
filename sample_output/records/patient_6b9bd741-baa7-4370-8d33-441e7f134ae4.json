@@ -1,0 +1,146 @@
+{
+  "recordId": "patient:6b9bd741-baa7-4370-8d33-441e7f134ae4",
+  "input": {
+    "id": "patient:6b9bd741-baa7-4370-8d33-441e7f134ae4",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/6b9bd741-baa7-4370-8d33-441e7f134ae4",
+    "person": {
+      "firstName": "Estrella",
+      "lastName": "Hettinger",
+      "fullName": "Estrella Hettinger"
+    },
+    "contact": {
+      "phone": "555-687-7890"
+    },
+    "location": {
+      "city": "Plymouth",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "2007-01-30",
+      "age": 19,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": []
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 4,
+    "usage": {
+      "inputTokens": 3705,
+      "outputTokens": 336
+    },
+    "durationMs": 79749,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:6b9bd741-baa7-4370-8d33-441e7f134ae4"
+        },
+        "result": {
+          "activeConditions": [],
+          "chronicConditions": [],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "text_reply",
+        "text": ""
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Estrella, we hope you’re doing well! It’s time to schedule your routine check‑up. Reply to book an appointment at your convenience. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 157
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Estrella, we hope you’re doing well! It’s time to schedule your routine check‑up. Reply to book an appointment at your convenience. Reply STOP to opt out.",
+    "rationale": "No risk flags or chronic conditions; a routine check‑in invitation is appropriate.",
+    "confidence": 1,
+    "category": "routine_checkin",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:6b9bd741-baa7-4370-8d33-441e7f134ae4",
+        "firstName": "Estrella",
+        "lastName": "Hettinger",
+        "phone": "555-687-7890",
+        "city": "Plymouth",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "routine_checkin"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "routine_checkin"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "6b9bd741-baa7-4370-8d33-441e7f134ae4"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Estrella, we hope you’re doing well! It’s time to schedule your routine check‑up. Reply to book an appointment at your convenience. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: No risk flags or chronic conditions; a routine check‑in invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0097",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

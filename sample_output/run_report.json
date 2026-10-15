@@ -1,0 +1,1011 @@
+{
+  "runId": "run_2026-10-15T18-43-37-555Z",
+  "mode": "live",
+  "model": "openai/gpt-oss-120b",
+  "startedAt": "2026-10-15T18:43:37.555Z",
+  "finishedAt": "2026-10-15T19:15:02.264Z",
+  "totals": {
+    "processed": 48,
+    "leads": 18,
+    "patients": 30,
+    "delivered": 48,
+    "deliveryFailed": 0,
+    "rejectedAtIngest": 4,
+    "decidedByRules": 16,
+    "decidedByAgent": 29,
+    "fallbacks": 3,
+    "escalatedToHuman": 7,
+    "deliveryRetries": 2
+  },
+  "llm": {
+    "calls": 102,
+    "inputTokens": 100568,
+    "outputTokens": 10486,
+    "avgCallsPerAgentRecord": 3.2,
+    "avgAgentMsPerRecord": 104088
+  },
+  "rejected": [
+    {
+      "sourceRef": "bad_leads.csv:line 2",
+      "stage": "ingest",
+      "reason": "full_name: is empty"
+    },
+    {
+      "sourceRef": "bad_leads.csv:line 3",
+      "stage": "ingest",
+      "reason": "company_size: must be one of 1-10, 11-50, 51-200, 201-500, 501-1000, 1000+"
+    },
+    {
+      "sourceRef": "bad_leads.csv:line 4",
+      "stage": "ingest",
+      "reason": "company: is missing; industry: is missing; company_size: must be one of 1-10, 11-50, 51-200, 201-500, 501-1000, 1000+"
+    },
+    {
+      "sourceRef": "https://r4.smarthealthit.org/Patient/broken-0001",
+      "stage": "ingest",
+      "reason": "name: is missing; birthDate: is not a FHIR date (YYYY, YYYY-MM or YYYY-MM-DD)"
+    }
+  ],
+  "records": [
+    {
+      "recordId": "lead:L001",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3115,
+        "outputTokens": 338
+      },
+      "agentMs": 40986,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0036",
+        "status": "updated",
+        "attempts": 3
+      }
+    },
+    {
+      "recordId": "lead:L002",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3205,
+        "outputTokens": 434
+      },
+      "agentMs": 50818,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0001",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L003",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3109,
+        "outputTokens": 339
+      },
+      "agentMs": 54801,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0035",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L004",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3109,
+        "outputTokens": 363
+      },
+      "agentMs": 60224,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0002",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L005",
+      "type": "lead",
+      "category": "hot",
+      "channel": "sales_handoff",
+      "escalate": true,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0003",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L006",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3098,
+        "outputTokens": 360
+      },
+      "agentMs": 60465,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0004",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L007",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3075,
+        "outputTokens": 277
+      },
+      "agentMs": 59767,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0005",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L008",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3112,
+        "outputTokens": 325
+      },
+      "agentMs": 59502,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0006",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L009",
+      "type": "lead",
+      "category": "hot",
+      "channel": "sales_handoff",
+      "escalate": true,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0007",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L010",
+      "type": "lead",
+      "category": "cold",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3066,
+        "outputTokens": 310
+      },
+      "agentMs": 59769,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0008",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L011",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_message",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 2,
+      "usage": {
+        "inputTokens": 1933,
+        "outputTokens": 209
+      },
+      "agentMs": 39724,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0009",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L012",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3098,
+        "outputTokens": 332
+      },
+      "agentMs": 60173,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0010",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L013",
+      "type": "lead",
+      "category": "cold",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3070,
+        "outputTokens": 300
+      },
+      "agentMs": 60528,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0011",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L014",
+      "type": "lead",
+      "category": "cold",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3019,
+        "outputTokens": 275
+      },
+      "agentMs": 60087,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0012",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L015",
+      "type": "lead",
+      "category": "hot",
+      "channel": "sales_handoff",
+      "escalate": true,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0013",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L016",
+      "type": "lead",
+      "category": "cold",
+      "channel": "linkedin_message",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3310,
+        "outputTokens": 527
+      },
+      "agentMs": 59667,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0014",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L017",
+      "type": "lead",
+      "category": "warm",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 6,
+      "usage": {
+        "inputTokens": 7434,
+        "outputTokens": 645
+      },
+      "agentMs": 120289,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0015",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "lead:L018",
+      "type": "lead",
+      "category": "cold",
+      "channel": "linkedin_connection_request",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 3117,
+        "outputTokens": 311
+      },
+      "agentMs": 59808,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0016",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:97b86776-fa4e-46dc-b9a4-52c269e73da9",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2668,
+        "outputTokens": 286
+      },
+      "agentMs": 60184,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0078",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:f194782e-be98-4311-96a9-ce8a2ea03313",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0077",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:340044b6-332e-4cac-a95c-f0efe95fc105",
+      "type": "patient",
+      "category": "routine_checkin",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2610,
+        "outputTokens": 251
+      },
+      "agentMs": 59547,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0079",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:7f445dad-0907-4a3e-81a5-ad75ecdff752",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 4,
+      "usage": {
+        "inputTokens": 3876,
+        "outputTokens": 433
+      },
+      "agentMs": 80748,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0084",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:3e26303e-a72a-4c60-866f-e5b81a9f1989",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0080",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:cccb981f-2a12-44d0-b1dd-5404ece3f535",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0081",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:0b896820-f478-4e9c-a456-acc676cf5640",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0082",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:8c8bea6b-3352-4331-b5e8-544c0fef254a",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0083",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:768be7ac-743f-4c24-aa0f-fed5a3a38b6a",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "care_team_review",
+      "escalate": true,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 1,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0085",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:d98ae128-2a42-4c85-b9aa-cebdf6bddb1d",
+      "type": "patient",
+      "category": "routine_checkin",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 5,
+      "usage": {
+        "inputTokens": 5037,
+        "outputTokens": 498
+      },
+      "agentMs": 100033,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0087",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:ec6a274e-5090-45c9-b153-e40418f6fa3d",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0086",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:f7ae627c-3c71-41fe-b8c0-d3d9c336d449",
+      "type": "patient",
+      "category": "routine_checkin",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2638,
+        "outputTokens": 286
+      },
+      "agentMs": 59308,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0088",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:f813f3a1-2f4e-4e4c-a0ee-3d5dc5286ae8",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 4,
+      "usage": {
+        "inputTokens": 3800,
+        "outputTokens": 361
+      },
+      "agentMs": 79768,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0089",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:618b2992-eec7-45c9-8544-12c9f586b78c",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 5,
+      "usage": {
+        "inputTokens": 5105,
+        "outputTokens": 469
+      },
+      "agentMs": 99911,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0093",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:7c483976-15af-49ce-97ad-81a13cf5f303",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0090",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:bb9a9324-aefe-4ff7-9535-ec6795de8aaa",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0091",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:457ad729-544f-4ed6-9eb4-20a2152a3687",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0092",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:ae6225ec-c4c0-400f-bbcd-4aba181be869",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2669,
+        "outputTokens": 301
+      },
+      "agentMs": 60535,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0094",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:beaf00da-c197-4e72-8b27-7ee1131348f1",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2670,
+        "outputTokens": 286
+      },
+      "agentMs": 60000,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0095",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:0a616e8d-e5d1-463e-af36-c2a4d4803be5",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 4,
+      "usage": {
+        "inputTokens": 3831,
+        "outputTokens": 389
+      },
+      "agentMs": 79299,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0096",
+        "status": "updated",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:6b9bd741-baa7-4370-8d33-441e7f134ae4",
+      "type": "patient",
+      "category": "routine_checkin",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 4,
+      "usage": {
+        "inputTokens": 3705,
+        "outputTokens": 336
+      },
+      "agentMs": 79749,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0097",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:f3721a5a-dfae-4933-b2fd-b001210c6b3b",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2695,
+        "outputTokens": 284
+      },
+      "agentMs": 59959,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0098",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:6a73c7dc-a64f-4a20-940e-f8f191525088",
+      "type": "patient",
+      "category": "routine_checkin",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2622,
+        "outputTokens": 270
+      },
+      "agentMs": 60173,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0099",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:9d2f59f0-f9b8-4794-877d-24ec6bb875fa",
+      "type": "patient",
+      "category": "routine_checkin",
+      "channel": "sms",
+      "escalate": false,
+      "decidedBy": "agent",
+      "llmCalls": 3,
+      "usage": {
+        "inputTokens": 2665,
+        "outputTokens": 299
+      },
+      "agentMs": 59797,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0100",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:437ea3a5-f3b6-4cec-8bb3-a426da296edd",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "care_team_review",
+      "escalate": true,
+      "decidedBy": "fallback",
+      "llmCalls": 2,
+      "usage": {
+        "inputTokens": 1654,
+        "outputTokens": 150
+      },
+      "agentMs": 469147,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0102",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:d4456fef-9f85-47c6-81c3-1dc1c2924326",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0101",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:13a00221-8417-4973-961e-e21b32ece95a",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "care_team_review",
+      "escalate": true,
+      "decidedBy": "fallback",
+      "llmCalls": 2,
+      "usage": {
+        "inputTokens": 1671,
+        "outputTokens": 176
+      },
+      "agentMs": 486551,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0105",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:feb67a40-0da5-4855-a7b2-2b5e11f48c5f",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0103",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:e86e9cae-89a3-44bf-9033-32a2d56f5113",
+      "type": "patient",
+      "category": "do_not_contact",
+      "channel": "none",
+      "escalate": false,
+      "decidedBy": "rules",
+      "llmCalls": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0
+      },
+      "agentMs": 0,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0104",
+        "status": "created",
+        "attempts": 1
+      }
+    },
+    {
+      "recordId": "patient:77155e2b-5d21-4b47-86f0-4004183d68b2",
+      "type": "patient",
+      "category": "chronic_care_followup",
+      "channel": "care_team_review",
+      "escalate": true,
+      "decidedBy": "fallback",
+      "llmCalls": 1,
+      "usage": {
+        "inputTokens": 782,
+        "outputTokens": 66
+      },
+      "agentMs": 469486,
+      "delivery": {
+        "ok": true,
+        "crmId": "crm_0106",
+        "status": "created",
+        "attempts": 1
+      }
+    }
+  ]
+}

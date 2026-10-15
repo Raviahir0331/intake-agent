@@ -1,0 +1,163 @@
+{
+  "recordId": "patient:ae6225ec-c4c0-400f-bbcd-4aba181be869",
+  "input": {
+    "id": "patient:ae6225ec-c4c0-400f-bbcd-4aba181be869",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/ae6225ec-c4c0-400f-bbcd-4aba181be869",
+    "person": {
+      "firstName": "Margarita",
+      "lastName": "Montalvo",
+      "fullName": "Margarita Montalvo"
+    },
+    "contact": {
+      "phone": "555-170-8010"
+    },
+    "location": {
+      "city": "Woburn",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "2000-06-16",
+      "age": 26,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "es",
+      "conditions": [
+        {
+          "code": "367498001",
+          "name": "Seasonal allergic rhinitis"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "233678006",
+          "name": "Childhood asthma"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 2669,
+      "outputTokens": 301
+    },
+    "durationMs": 60535,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:ae6225ec-c4c0-400f-bbcd-4aba181be869"
+        },
+        "result": {
+          "activeConditions": [
+            "Seasonal allergic rhinitis",
+            "Hypertension",
+            "Childhood asthma"
+          ],
+          "chronicConditions": [
+            "Hypertension",
+            "Childhood asthma"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hola Margarita, le invitamos a programar una visita de seguimiento para cuidar su salud. Por favor, responda a este mensaje para agendar una cita. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 169
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "es",
+    "message": "Hola Margarita, le invitamos a programar una visita de seguimiento para cuidar su salud. Por favor, responda a este mensaje para agendar una cita. Reply STOP to opt out.",
+    "rationale": "Patient has chronic hypertension and asthma, requiring a follow‑up visit invitation.",
+    "confidence": 0.99,
+    "category": "chronic_care_followup",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:ae6225ec-c4c0-400f-bbcd-4aba181be869",
+        "firstName": "Margarita",
+        "lastName": "Montalvo",
+        "phone": "555-170-8010",
+        "city": "Woburn",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup",
+          "lang-es"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.99
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "ae6225ec-c4c0-400f-bbcd-4aba181be869"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "es",
+        "message": "Hola Margarita, le invitamos a programar una visita de seguimiento para cuidar su salud. Por favor, responda a este mensaje para agendar una cita. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: Patient has chronic hypertension and asthma, requiring a follow‑up visit invitation."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0094",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

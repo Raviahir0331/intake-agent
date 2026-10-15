@@ -54,12 +54,17 @@ export function createChatModel(llm: AppConfig["llm"]): ChatModel {
             model: llm.model,
             messages,
             tools,
+            // Not "required": Groq's gpt-oss then fails the whole request with a 400 whenever the
+            // model answers in text. The prompts ask for tool calls only, and runAgent nudges.
             tool_choice: "auto",
             ...(llm.reasoningEffort ? { reasoning_effort: llm.reasoningEffort } : {}),
           });
         },
         {
           attempts: 4,
+          // Free-tier token-per-minute limits can 429 several times in a row; each wait follows
+          // the server's retry-after, so extra attempts cost time, not quota.
+          rateLimitAttempts: 8,
           baseDelayMs: 2_000,
           shouldRetry: (error) => error instanceof APIConnectionError || isTemporaryFailure(error),
         },

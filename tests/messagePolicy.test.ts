@@ -30,6 +30,21 @@ describe("lead message policy", () => {
     expect(problems.join(" ")).toMatch(/300 characters/);
   });
 
+  it("rejects a sign-off with a sender name, in English or French", () => {
+    for (const ending of ["Best,\nAlex", "Thanks,\n[Your Name]", "Best, Alex", "Cordialement"]) {
+      const message = `Hi Dana, saw your post on AI receptionists. Open to connecting?\n\n${ending}`;
+      expect(checkLeadMessage(lead, "linkedin_connection_request", message).join(" ")).toMatch(
+        /sign-off/,
+      );
+    }
+  });
+
+  it("allows a closing sentence that is not a sign-off", () => {
+    const message =
+      "Hi Dana, thanks for sharing that post on AI receptionists. Open to connecting?";
+    expect(checkLeadMessage(lead, "linkedin_connection_request", message)).toEqual([]);
+  });
+
   it("does not apply outreach rules to an internal sales brief", () => {
     expect(checkLeadMessage(lead, "sales_handoff", "Requested a demo. Call today.")).toEqual([]);
   });

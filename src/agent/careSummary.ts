@@ -4,6 +4,8 @@ export type CareSummary = {
   activeConditions: string[];
   chronicConditions: string[];
   riskFlags: string[];
+  /** Sensitive history left out of this view. Only the count, so the model knows it exists. */
+  sensitiveConditionsOmitted: number;
   contactOptions: Array<"sms" | "email">;
 };
 
@@ -11,8 +13,17 @@ export type CareSummary = {
 const HIGH_RISK =
   /neoplasm|cancer|carcinoma|malignant|heart failure|myocardial infarction|stroke|stage [45]\b|end[- ]stage|sepsis|overdose|suicid/i;
 
+// The patient may not be able to act on (or consent to) a message; the care team decides who to
+// contact, often a caregiver.
+const COGNITIVE_IMPAIRMENT = /dementia|alzheimer/i;
+
 const CHRONIC =
-  /diabetes|prediabetes|hypertension|asthma|chronic|copd|hyperlipidemia|arthritis|ischemic heart|kidney/i;
+  /diabet|hypertension|asthma|chronic|copd|emphysema|hyperlipidemia|hypertriglyceridemia|metabolic syndrome|arthritis|ischemic heart|coronary|atrial fibrillation|osteoporosis|kidney|obesity|hypothyroidism|epilepsy/i;
+
+// Reproductive, mental health and substance use history. Outreach never needs it, so it stays out
+// of the model's view (minimum necessary). Anything that is also high risk is still flagged above.
+const SENSITIVE =
+  /miscarriage|pregnan|abortion|depress|anxiety|bipolar|schizo|substance|opioid|alcohol|drug abuse|\bhiv\b/i;
 
 /**
  * The clinical view the agent works from. It carries no last name, birth date, address or
@@ -20,14 +31,18 @@ const CHRONIC =
  */
 export function buildCareSummary(record: PatientRecord): CareSummary {
   const names = record.patient.conditions.map((condition) => condition.name);
+  const isRisk = (name: string) => HIGH_RISK.test(name) || COGNITIVE_IMPAIRMENT.test(name);
+  const shown = names.filter((name) => isRisk(name) || !SENSITIVE.test(name));
+
   const contactOptions: CareSummary["contactOptions"] = [];
   if (record.contact.phone) contactOptions.push("sms");
   if (record.contact.email) contactOptions.push("email");
 
   return {
-    activeConditions: names,
-    chronicConditions: names.filter((name) => CHRONIC.test(name)),
-    riskFlags: names.filter((name) => HIGH_RISK.test(name)),
+    activeConditions: shown,
+    chronicConditions: shown.filter((name) => CHRONIC.test(name)),
+    riskFlags: shown.filter(isRisk),
+    sensitiveConditionsOmitted: names.length - shown.length,
     contactOptions,
   };
 }

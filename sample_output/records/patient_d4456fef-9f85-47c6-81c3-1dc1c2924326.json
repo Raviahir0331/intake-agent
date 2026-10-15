@@ -1,0 +1,125 @@
+{
+  "recordId": "patient:d4456fef-9f85-47c6-81c3-1dc1c2924326",
+  "input": {
+    "id": "patient:d4456fef-9f85-47c6-81c3-1dc1c2924326",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/d4456fef-9f85-47c6-81c3-1dc1c2924326",
+    "person": {
+      "firstName": "Miguel",
+      "lastName": "Garibay",
+      "fullName": "Miguel Garibay"
+    },
+    "contact": {
+      "phone": "555-434-4270"
+    },
+    "location": {
+      "city": "Billerica",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1937-02-13",
+      "age": 89,
+      "gender": "male",
+      "isDeceased": true,
+      "language": "es",
+      "conditions": [
+        {
+          "code": "128613002",
+          "name": "Seizure disorder"
+        },
+        {
+          "code": "239873007",
+          "name": "Osteoarthritis of knee"
+        },
+        {
+          "code": "88805009",
+          "name": "Chronic congestive heart failure"
+        },
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:d4456fef-9f85-47c6-81c3-1dc1c2924326",
+        "firstName": "Miguel",
+        "lastName": "Garibay",
+        "phone": "555-434-4270",
+        "city": "Billerica",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "d4456fef-9f85-47c6-81c3-1dc1c2924326"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0101",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

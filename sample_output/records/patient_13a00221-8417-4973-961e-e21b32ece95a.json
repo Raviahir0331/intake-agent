@@ -1,0 +1,172 @@
+{
+  "recordId": "patient:13a00221-8417-4973-961e-e21b32ece95a",
+  "input": {
+    "id": "patient:13a00221-8417-4973-961e-e21b32ece95a",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/13a00221-8417-4973-961e-e21b32ece95a",
+    "person": {
+      "firstName": "Virginia",
+      "lastName": "Mercado",
+      "fullName": "Virginia Mercado"
+    },
+    "contact": {
+      "phone": "555-460-4462"
+    },
+    "location": {
+      "city": "Westwood",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1969-04-15",
+      "age": 57,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "es",
+      "conditions": [
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "201834006",
+          "name": "Localized, primary osteoarthritis of the hand"
+        },
+        {
+          "code": "19169002",
+          "name": "Miscarriage in first trimester"
+        },
+        {
+          "code": "5602001",
+          "name": "Opioid abuse"
+        },
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "fallback",
+    "promptVersion": "patient-v2",
+    "llmCalls": 2,
+    "usage": {
+      "inputTokens": 1671,
+      "outputTokens": 176
+    },
+    "durationMs": 486551,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:13a00221-8417-4973-961e-e21b32ece95a"
+        },
+        "result": {
+          "activeConditions": [
+            "Prediabetes",
+            "Localized, primary osteoarthritis of the hand",
+            "Anemia"
+          ],
+          "chronicConditions": [
+            "Prediabetes",
+            "Localized, primary osteoarthritis of the hand"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 2,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hola Virginia, le recordamos que es importante cuidar su salud. Le invitamos a agendar una visita de seguimiento para mantener su bienestar. Puede responder a este mensaje o llamar para programar su cita. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 227
+        }
+      }
+    ]
+  },
+  "decision": {
+    "category": "chronic_care_followup",
+    "channel": "care_team_review",
+    "escalate": true,
+    "tone": "internal",
+    "language": "en",
+    "message": "Agent could not finish this patient (LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198856, Requested 1432. Please try again in 2m4.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing). Please review manually.",
+    "rationale": "Fallback: LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198856, Requested 1432. Please try again in 2m4.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing",
+    "confidence": 0
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:13a00221-8417-4973-961e-e21b32ece95a",
+        "firstName": "Virginia",
+        "lastName": "Mercado",
+        "phone": "555-460-4462",
+        "city": "Westwood",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup",
+          "needs-human",
+          "agent-fallback"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "care_team_review"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0
+          },
+          {
+            "key": "decided_by",
+            "field_value": "fallback"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "13a00221-8417-4973-961e-e21b32ece95a"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Fallback: LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198856, Requested 1432. Please try again in 2m4.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\n\nBrief: Agent could not finish this patient (LLM error: Error: 429 Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m4xxpvexe6ysk0r072w7sh6j` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198856, Requested 1432. Please try again in 2m4.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing). Please review manually."
+      },
+      "task": {
+        "title": "Review Virginia Mercado: agent could not decide",
+        "assignedTo": "care_team",
+        "dueInHours": 24
+      }
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0105",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

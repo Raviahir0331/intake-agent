@@ -1,0 +1,154 @@
+{
+  "recordId": "patient:9d2f59f0-f9b8-4794-877d-24ec6bb875fa",
+  "input": {
+    "id": "patient:9d2f59f0-f9b8-4794-877d-24ec6bb875fa",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/9d2f59f0-f9b8-4794-877d-24ec6bb875fa",
+    "person": {
+      "firstName": "Malcom",
+      "lastName": "Harris",
+      "fullName": "Malcom Harris"
+    },
+    "contact": {
+      "phone": "555-187-6994"
+    },
+    "location": {
+      "city": "Yarmouth",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1964-11-06",
+      "age": 61,
+      "gender": "male",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "428251008",
+          "name": "History of appendectomy"
+        },
+        {
+          "code": "74400008",
+          "name": "Appendicitis"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 2665,
+      "outputTokens": 299
+    },
+    "durationMs": 59797,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:9d2f59f0-f9b8-4794-877d-24ec6bb875fa"
+        },
+        "result": {
+          "activeConditions": [
+            "History of appendectomy",
+            "Appendicitis"
+          ],
+          "chronicConditions": [],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Malcom, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call us at 555‑1234. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 165
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Malcom, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call us at 555‑1234. Reply STOP to opt out.",
+    "rationale": "No chronic conditions or risk flags; a routine check‑up invitation is appropriate.",
+    "confidence": 0.99,
+    "category": "routine_checkin",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:9d2f59f0-f9b8-4794-877d-24ec6bb875fa",
+        "firstName": "Malcom",
+        "lastName": "Harris",
+        "phone": "555-187-6994",
+        "city": "Yarmouth",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "routine_checkin"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "routine_checkin"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.99
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "9d2f59f0-f9b8-4794-877d-24ec6bb875fa"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Malcom, we hope you’re doing well! It’s time to schedule your routine check‑up. Please reply with a convenient time or call us at 555‑1234. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: No chronic conditions or risk flags; a routine check‑up invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0100",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}

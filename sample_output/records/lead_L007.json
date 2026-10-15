@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L007",
+  "input": {
+    "id": "lead:L007",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 8",
+    "person": {
+      "firstName": "Laura",
+      "lastName": "Bianchi",
+      "fullName": "Laura Bianchi"
+    },
+    "contact": {},
+    "location": {
+      "city": "Newark",
+      "region": "NJ",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Office Manager",
+      "company": "Bianchi Orthodontics",
+      "industry": "Dental",
+      "companySize": "1-10",
+      "headline": "Office manager, small ortho practice, solo admin",
+      "recentActivity": "Commented asking about missed call recovery tools",
+      "connectionNote": "Warm intro from existing client"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3075,
+      "outputTokens": 277
+    },
+    "durationMs": 59767,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L007"
+        },
+        "result": {
+          "score": 78,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+25 actively looking for a solution",
+            "+15 activity matches what we sell",
+            "+8 influences the decision",
+            "+5 company size outside our sweet spot",
+            "+25 warm introduction"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Laura, I saw your comment about looking for missed call recovery tools. We help dental offices capture every patient call with AI receptionists. Could I send you a quick 2‑minute demo video?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 193
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Laura, I saw your comment about looking for missed call recovery tools. We help dental offices capture every patient call with AI receptionists. Could I send you a quick 2‑minute demo video?",
+    "rationale": "Warm intro plus her direct comment about missed call recovery shows clear interest, fitting a warm lead for a personal LinkedIn request.",
+    "confidence": 0.92,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L007",
+        "firstName": "Laura",
+        "lastName": "Bianchi",
+        "companyName": "Bianchi Orthodontics",
+        "city": "Newark",
+        "state": "NJ",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.92
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Office Manager"
+          },
+          {
+            "key": "industry",
+            "field_value": "Dental"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 78
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Laura, I saw your comment about looking for missed call recovery tools. We help dental offices capture every patient call with AI receptionists. Could I send you a quick 2‑minute demo video?"
+      },
+      "note": {
+        "body": "Agent: Warm intro plus her direct comment about missed call recovery shows clear interest, fitting a warm lead for a personal LinkedIn request."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0005",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

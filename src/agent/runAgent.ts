@@ -83,7 +83,9 @@ export async function runAgent<TRecord extends UnifiedRecord, TDecision extends 
         steps.push({ kind: "text_reply", text: turn.message.content ?? "" });
         messages.push({
           role: "user",
-          content: "Continue with the tools and finish with submit_decision.",
+          content:
+            "Reply only with tool calls. Put a draft in check_message and the final decision in " +
+            "submit_decision; plain text is not read.",
         });
         continue;
       }

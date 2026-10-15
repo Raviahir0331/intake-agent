@@ -1,3 +1,4 @@
+import "./checkNodeVersion";
 import { parseArgs } from "node:util";
 import { loadConfig } from "./config";
 import { runPipeline } from "./pipeline";

@@ -1,0 +1,188 @@
+{
+  "recordId": "lead:L017",
+  "input": {
+    "id": "lead:L017",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 18",
+    "person": {
+      "firstName": "Chloe",
+      "lastName": "Fournier",
+      "fullName": "Chloe Fournier"
+    },
+    "contact": {},
+    "location": {
+      "city": "Montreal",
+      "region": "QC",
+      "country": "CA"
+    },
+    "lead": {
+      "jobTitle": "Practice Administrator",
+      "company": "Fournier Med Spa",
+      "industry": "Medspa",
+      "companySize": "1-10",
+      "headline": "Practice administrator, bilingual clinic, growing fast",
+      "recentActivity": "Commented asking about multilingual AI receptionists",
+      "connectionNote": "Warm intro from partner agency"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 6,
+    "usage": {
+      "inputTokens": 7434,
+      "outputTokens": 645
+    },
+    "durationMs": 120289,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L017"
+        },
+        "result": {
+          "score": 78,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+25 actively looking for a solution",
+            "+15 activity matches what we sell",
+            "+8 influences the decision",
+            "+5 company size outside our sweet spot",
+            "+25 warm introduction"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Bonjour Chloe,\n\nJ’ai vu votre commentaire sur les réceptionnistes IA multilingues. Chez [Company] nous aidons les medspas comme le vôtre à gérer les appels en français et anglais sans effort. Seriez‑vous ouverte à connecter pour en discuter rapidement ?"
+        },
+        "result": {
+          "ok": false,
+          "problems": [
+            "message still contains a placeholder like [Name] or {{...}}"
+          ],
+          "characters": 253
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Bonjour Chloe,\n\nJ’ai vu votre commentaire sur les réceptionnistes IA multilingues. Nous aidons les medspas comme le vôtre à gérer les appels en français et anglais sans effort. Seriez‑vous ouverte à connecter pour en discuter rapidement ?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 238
+        }
+      },
+      {
+        "kind": "text_reply",
+        "text": "{\n  \"category\": \"warm\",\n  \"channel\": \"linkedin_connection_request\",\n  \"confidence\": 0.92,\n  \"escalate\": false,\n  \"language\": \"fr\",\n  \"message\": \"Bonjour Chloe,\\n\\nJ’ai vu votre commentaire sur les réceptionnistes IA multilingues. Nous aidons les medspas comme le vôtre à gérer les appels en français et anglais sans effort. Seriez‑vous ouverte à connecter pour en discuter rapidement ?\",\n  \"rationale\": \"Warm intro and direct comment about multilingual AI receptionists show clear interest, justifying a warm outreach.\",\n  \"tone\": \"consultative\"\n}"
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Bonjour Chloe,\n\nJ’ai vu votre commentaire sur les réceptionnistes IA multilingues. Nous aidons les medspas comme le vôtre à gérer les appels en français et anglais sans effort. Seriez‑vous ouverte à connecter pour en discuter rapidement ?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 238
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "fr",
+    "message": "Bonjour Chloe,\n\nJ’ai vu votre commentaire sur les réceptionnistes IA multilingues. Nous aidons les medspas comme le vôtre à gérer les appels en français et anglais sans effort. Seriez‑vous ouverte à connecter pour en discuter rapidement ?",
+    "rationale": "Warm intro and direct comment about multilingual AI receptionists show clear interest, justifying a warm outreach.",
+    "confidence": 0.92,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L017",
+        "firstName": "Chloe",
+        "lastName": "Fournier",
+        "companyName": "Fournier Med Spa",
+        "city": "Montreal",
+        "state": "QC",
+        "country": "CA",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm",
+          "lang-fr"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.92
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Practice Administrator"
+          },
+          {
+            "key": "industry",
+            "field_value": "Medspa"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 78
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "fr",
+        "message": "Bonjour Chloe,\n\nJ’ai vu votre commentaire sur les réceptionnistes IA multilingues. Nous aidons les medspas comme le vôtre à gérer les appels en français et anglais sans effort. Seriez‑vous ouverte à connecter pour en discuter rapidement ?"
+      },
+      "note": {
+        "body": "Agent: Warm intro and direct comment about multilingual AI receptionists show clear interest, justifying a warm outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0015",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

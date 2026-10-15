@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L001",
+  "input": {
+    "id": "lead:L001",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 2",
+    "person": {
+      "firstName": "Rebecca",
+      "lastName": "Hart",
+      "fullName": "Rebecca Hart"
+    },
+    "contact": {},
+    "location": {
+      "city": "Austin",
+      "region": "TX",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Practice Manager",
+      "company": "Northgate Family Clinic",
+      "industry": "Healthcare",
+      "companySize": "11-50",
+      "headline": "Practice Manager helping small clinics run smoother ops",
+      "recentActivity": "Liked a post about AI receptionists for medical clinics",
+      "connectionNote": "Sent a connection request after webinar on clinic automation"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3115,
+      "outputTokens": 338
+    },
+    "durationMs": 40986,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L001"
+        },
+        "result": {
+          "score": 51,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+8 light engagement with content",
+            "+15 activity matches what we sell",
+            "+8 influences the decision",
+            "+10 company size in our sweet spot",
+            "+10 has already engaged with us"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Rebecca, I saw you liked our recent post on AI receptionists for clinics. Since you’re focused on streamlining operations at Northgate Family Clinic, would you be open to a quick call to explore how an AI receptionist could help your team?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 242
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Rebecca, I saw you liked our recent post on AI receptionists for clinics. Since you’re focused on streamlining operations at Northgate Family Clinic, would you be open to a quick call to explore how an AI receptionist could help your team?",
+    "rationale": "The lead engaged directly with a post about our AI receptionist product, indicating clear interest, fitting a warm category. No connection yet, so we use a connection request with a low‑effort ask.",
+    "confidence": 0.92,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L001",
+        "firstName": "Rebecca",
+        "lastName": "Hart",
+        "companyName": "Northgate Family Clinic",
+        "city": "Austin",
+        "state": "TX",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.92
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Practice Manager"
+          },
+          {
+            "key": "industry",
+            "field_value": "Healthcare"
+          },
+          {
+            "key": "company_size",
+            "field_value": "11-50"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 51
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Rebecca, I saw you liked our recent post on AI receptionists for clinics. Since you’re focused on streamlining operations at Northgate Family Clinic, would you be open to a quick call to explore how an AI receptionist could help your team?"
+      },
+      "note": {
+        "body": "Agent: The lead engaged directly with a post about our AI receptionist product, indicating clear interest, fitting a warm category. No connection yet, so we use a connection request with a low‑effort ask."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0036",
+      "status": "updated",
+      "attempts": 3
+    }
+  }
+}

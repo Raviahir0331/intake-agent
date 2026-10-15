@@ -1,0 +1,133 @@
+{
+  "recordId": "patient:f194782e-be98-4311-96a9-ce8a2ea03313",
+  "input": {
+    "id": "patient:f194782e-be98-4311-96a9-ce8a2ea03313",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/f194782e-be98-4311-96a9-ce8a2ea03313",
+    "person": {
+      "firstName": "Lamont",
+      "lastName": "Emard",
+      "fullName": "Lamont Emard"
+    },
+    "contact": {
+      "phone": "555-630-3821"
+    },
+    "location": {
+      "city": "Reading",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1932-06-09",
+      "age": 94,
+      "gender": "male",
+      "isDeceased": true,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "713197008",
+          "name": "Recurrent rectal polyp"
+        },
+        {
+          "code": "197927001",
+          "name": "Recurrent urinary tract infection"
+        },
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        },
+        {
+          "code": "26929004",
+          "name": "Alzheimer's disease"
+        },
+        {
+          "code": "68496003",
+          "name": "Polyp of colon"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:f194782e-be98-4311-96a9-ce8a2ea03313",
+        "firstName": "Lamont",
+        "lastName": "Emard",
+        "phone": "555-630-3821",
+        "city": "Reading",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "f194782e-be98-4311-96a9-ce8a2ea03313"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0077",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

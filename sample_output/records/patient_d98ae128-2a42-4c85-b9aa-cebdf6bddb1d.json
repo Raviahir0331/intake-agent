@@ -1,0 +1,159 @@
+{
+  "recordId": "patient:d98ae128-2a42-4c85-b9aa-cebdf6bddb1d",
+  "input": {
+    "id": "patient:d98ae128-2a42-4c85-b9aa-cebdf6bddb1d",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/d98ae128-2a42-4c85-b9aa-cebdf6bddb1d",
+    "person": {
+      "firstName": "Jonathon",
+      "lastName": "Dietrich",
+      "fullName": "Jonathon Dietrich"
+    },
+    "contact": {
+      "phone": "555-392-1685"
+    },
+    "location": {
+      "city": "Newburyport",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1969-03-04",
+      "age": 57,
+      "gender": "male",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": []
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 5,
+    "usage": {
+      "inputTokens": 5037,
+      "outputTokens": 498
+    },
+    "durationMs": 100033,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:d98ae128-2a42-4c85-b9aa-cebdf6bddb1d"
+        },
+        "result": {
+          "activeConditions": [],
+          "chronicConditions": [],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Jonathon, it's the clinic. We hope you're well! It's a good time to schedule your routine check‑up. Please reply with a convenient date or call us at 555‑1234. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 185
+        }
+      },
+      {
+        "kind": "text_reply",
+        "text": "{\n  \"category\": \"routine_checkin\",\n  \"channel\": \"sms\",\n  \"confidence\": 1,\n  \"escalate\": false,\n  \"language\": \"en\",\n  \"message\": \"Hi Jonathon, it's the clinic. We hope you're well! It's a good time to schedule your routine check‑up. Please reply with a convenient date or call us at 555‑1234. Reply STOP to opt out.\",\n  \"rationale\": \"No risk flags or chronic conditions; a routine check‑in invitation is appropriate.\",\n  \"tone\": \"friendly\"\n}"
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Jonathon, it's the clinic. We hope you're well! It's a good time to schedule your routine check‑up. Please reply with a convenient date or call us at 555‑1234. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 185
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Jonathon, it's the clinic. We hope you're well! It's a good time to schedule your routine check‑up. Please reply with a convenient date or call us at 555‑1234. Reply STOP to opt out.",
+    "rationale": "No risk flags or chronic conditions; a routine check‑in invitation is appropriate.",
+    "confidence": 1,
+    "category": "routine_checkin",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:d98ae128-2a42-4c85-b9aa-cebdf6bddb1d",
+        "firstName": "Jonathon",
+        "lastName": "Dietrich",
+        "phone": "555-392-1685",
+        "city": "Newburyport",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "routine_checkin"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "routine_checkin"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "d98ae128-2a42-4c85-b9aa-cebdf6bddb1d"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Jonathon, it's the clinic. We hope you're well! It's a good time to schedule your routine check‑up. Please reply with a convenient date or call us at 555‑1234. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: No risk flags or chronic conditions; a routine check‑in invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0087",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

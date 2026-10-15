@@ -1,0 +1,125 @@
+{
+  "recordId": "patient:bb9a9324-aefe-4ff7-9535-ec6795de8aaa",
+  "input": {
+    "id": "patient:bb9a9324-aefe-4ff7-9535-ec6795de8aaa",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/bb9a9324-aefe-4ff7-9535-ec6795de8aaa",
+    "person": {
+      "firstName": "Tiera",
+      "lastName": "Boyle",
+      "fullName": "Tiera Boyle"
+    },
+    "contact": {
+      "phone": "555-601-8756"
+    },
+    "location": {
+      "city": "Somerville",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1958-03-14",
+      "age": 68,
+      "gender": "female",
+      "isDeceased": true,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "40055000",
+          "name": "Chronic sinusitis"
+        },
+        {
+          "code": "19169002",
+          "name": "Miscarriage in first trimester"
+        },
+        {
+          "code": "88805009",
+          "name": "Chronic congestive heart failure"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "patient-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "do_not_contact",
+    "channel": "none",
+    "escalate": false,
+    "tone": "internal",
+    "language": "en",
+    "message": "Patient is recorded as deceased. Suppress all outreach.",
+    "rationale": "Rule: deceased patients are never contacted.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:bb9a9324-aefe-4ff7-9535-ec6795de8aaa",
+        "firstName": "Tiera",
+        "lastName": "Boyle",
+        "phone": "555-601-8756",
+        "city": "Somerville",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "do_not_contact"
+        ],
+        "dnd": true,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "do_not_contact"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "none"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "bb9a9324-aefe-4ff7-9535-ec6795de8aaa"
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Rule: deceased patients are never contacted.\n\nBrief: Patient is recorded as deceased. Suppress all outreach."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0091",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

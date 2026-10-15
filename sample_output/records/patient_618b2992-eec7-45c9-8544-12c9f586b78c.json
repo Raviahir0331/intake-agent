@@ -1,0 +1,185 @@
+{
+  "recordId": "patient:618b2992-eec7-45c9-8544-12c9f586b78c",
+  "input": {
+    "id": "patient:618b2992-eec7-45c9-8544-12c9f586b78c",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/618b2992-eec7-45c9-8544-12c9f586b78c",
+    "person": {
+      "firstName": "Jesus",
+      "lastName": "Smitham",
+      "fullName": "Jesus Smitham"
+    },
+    "contact": {
+      "phone": "555-767-9619"
+    },
+    "location": {
+      "city": "Chicopee",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1953-01-10",
+      "age": 73,
+      "gender": "male",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "55822004",
+          "name": "Hyperlipidemia"
+        },
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 5,
+    "usage": {
+      "inputTokens": 5105,
+      "outputTokens": 469
+    },
+    "durationMs": 99911,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:618b2992-eec7-45c9-8544-12c9f586b78c"
+        },
+        "result": {
+          "activeConditions": [
+            "Prediabetes",
+            "Hypertension",
+            "Hyperlipidemia",
+            "Anemia"
+          ],
+          "chronicConditions": [
+            "Prediabetes",
+            "Hypertension",
+            "Hyperlipidemia"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Jesus, this is your clinic. We'd like to invite you to schedule a follow-up visit to discuss your health. Please call or reply to book an appointment. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 176
+        }
+      },
+      {
+        "kind": "text_reply",
+        "text": "{\n  \"category\": \"chronic_care_followup\",\n  \"channel\": \"sms\",\n  \"confidence\": 1,\n  \"escalate\": false,\n  \"language\": \"en\",\n  \"message\": \"Hi Jesus, this is your clinic. We'd like to invite you to schedule a follow-up visit to discuss your health. Please call or reply to book an appointment. Reply STOP to opt out.\",\n  \"rationale\": \"Patient has chronic conditions and no risk flags, so a follow‑up invitation is appropriate.\",\n  \"tone\": \"friendly\"\n}"
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Jesus, this is your clinic. We'd like to invite you to schedule a follow-up visit to discuss your health. Please call or reply to book an appointment. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 176
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Jesus, this is your clinic. We'd like to invite you to schedule a follow-up visit to discuss your health. Please call or reply to book an appointment. Reply STOP to opt out.",
+    "rationale": "Patient has chronic conditions and no risk flags, so a follow‑up invitation is appropriate.",
+    "confidence": 1,
+    "category": "chronic_care_followup",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:618b2992-eec7-45c9-8544-12c9f586b78c",
+        "firstName": "Jesus",
+        "lastName": "Smitham",
+        "phone": "555-767-9619",
+        "city": "Chicopee",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "618b2992-eec7-45c9-8544-12c9f586b78c"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Jesus, this is your clinic. We'd like to invite you to schedule a follow-up visit to discuss your health. Please call or reply to book an appointment. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: Patient has chronic conditions and no risk flags, so a follow‑up invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0093",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

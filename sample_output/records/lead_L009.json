@@ -1,0 +1,124 @@
+{
+  "recordId": "lead:L009",
+  "input": {
+    "id": "lead:L009",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 10",
+    "person": {
+      "firstName": "Emily",
+      "lastName": "Zhang",
+      "fullName": "Emily Zhang"
+    },
+    "contact": {},
+    "location": {
+      "city": "San Diego",
+      "region": "CA",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Clinical Director",
+      "company": "Vitality Wellness Group",
+      "industry": "Wellness",
+      "companySize": "51-200",
+      "headline": "Clinical director overseeing 4 wellness centers",
+      "recentActivity": "Posted about hiring more front-desk staff due to call volume",
+      "connectionNote": "Requested pricing info via LinkedIn message"
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "lead-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "hot",
+    "channel": "sales_handoff",
+    "escalate": true,
+    "tone": "internal",
+    "language": "en",
+    "message": "Emily Zhang (Clinical Director, Vitality Wellness Group) reached out: \"Requested pricing info via LinkedIn message\". Reply within the hour.",
+    "rationale": "Inbound request from the lead. Rule: inbound requests always go straight to sales.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L009",
+        "firstName": "Emily",
+        "lastName": "Zhang",
+        "companyName": "Vitality Wellness Group",
+        "city": "San Diego",
+        "state": "CA",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "hot",
+          "needs-human"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "hot"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sales_handoff"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Clinical Director"
+          },
+          {
+            "key": "industry",
+            "field_value": "Wellness"
+          },
+          {
+            "key": "company_size",
+            "field_value": "51-200"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 55
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Inbound request from the lead. Rule: inbound requests always go straight to sales.\n\nBrief: Emily Zhang (Clinical Director, Vitality Wellness Group) reached out: \"Requested pricing info via LinkedIn message\". Reply within the hour."
+      },
+      "task": {
+        "title": "Call Emily Zhang (Vitality Wellness Group)",
+        "assignedTo": "sales",
+        "dueInHours": 1
+      }
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0007",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

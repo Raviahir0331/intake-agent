@@ -1,0 +1,124 @@
+{
+  "recordId": "lead:L005",
+  "input": {
+    "id": "lead:L005",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 6",
+    "person": {
+      "firstName": "Angela",
+      "lastName": "Torres",
+      "fullName": "Angela Torres"
+    },
+    "contact": {},
+    "location": {
+      "city": "Phoenix",
+      "region": "AZ",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "VP Marketing",
+      "company": "ClearPath Urgent Care",
+      "industry": "Healthcare",
+      "companySize": "201-500",
+      "headline": "VP Marketing scaling multi-location urgent care brand",
+      "recentActivity": "Attended a HubSpot webinar last week",
+      "connectionNote": "Requested a demo via website form"
+    }
+  },
+  "agent": {
+    "decidedBy": "rules",
+    "promptVersion": "lead-v2",
+    "llmCalls": 0,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0
+    },
+    "durationMs": 0,
+    "steps": []
+  },
+  "decision": {
+    "category": "hot",
+    "channel": "sales_handoff",
+    "escalate": true,
+    "tone": "internal",
+    "language": "en",
+    "message": "Angela Torres (VP Marketing, ClearPath Urgent Care) reached out: \"Requested a demo via website form\". Reply within the hour.",
+    "rationale": "Inbound request from the lead. Rule: inbound requests always go straight to sales.",
+    "confidence": 1
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L005",
+        "firstName": "Angela",
+        "lastName": "Torres",
+        "companyName": "ClearPath Urgent Care",
+        "city": "Phoenix",
+        "state": "AZ",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "hot",
+          "needs-human"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "hot"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sales_handoff"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 1
+          },
+          {
+            "key": "decided_by",
+            "field_value": "rules"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "VP Marketing"
+          },
+          {
+            "key": "industry",
+            "field_value": "Healthcare"
+          },
+          {
+            "key": "company_size",
+            "field_value": "201-500"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 28
+          }
+        ]
+      },
+      "outreach": null,
+      "note": {
+        "body": "Agent: Inbound request from the lead. Rule: inbound requests always go straight to sales.\n\nBrief: Angela Torres (VP Marketing, ClearPath Urgent Care) reached out: \"Requested a demo via website form\". Reply within the hour."
+      },
+      "task": {
+        "title": "Call Angela Torres (ClearPath Urgent Care)",
+        "assignedTo": "sales",
+        "dueInHours": 1
+      }
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0003",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

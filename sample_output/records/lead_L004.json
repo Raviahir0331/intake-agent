@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L004",
+  "input": {
+    "id": "lead:L004",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 5",
+    "person": {
+      "firstName": "James",
+      "lastName": "O'Connell",
+      "fullName": "James O'Connell"
+    },
+    "contact": {},
+    "location": {
+      "city": "Miami",
+      "region": "FL",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Founder",
+      "company": "O'Connell Med Spa",
+      "industry": "Medspa",
+      "companySize": "1-10",
+      "headline": "Founder, medspa entrepreneur, ex-nurse",
+      "recentActivity": "Posted about struggling with lead follow-up speed",
+      "connectionNote": "Cold outreach, no prior interaction"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3109,
+      "outputTokens": 363
+    },
+    "durationMs": 60224,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L004"
+        },
+        "result": {
+          "score": 60,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+25 actively looking for a solution",
+            "+15 activity matches what we sell",
+            "+15 decision maker",
+            "+5 company size outside our sweet spot",
+            "+0 cold, no relationship yet"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi James,\n\nI saw your post about the challenges of lead follow‑up speed at your med spa. We’ve helped similar clinics streamline that process with AI‑driven receptionists.\n\nWould you be open to connecting to discuss a quick 2‑minute demo?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 238
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi James,\n\nI saw your post about the challenges of lead follow‑up speed at your med spa. We’ve helped similar clinics streamline that process with AI‑driven receptionists.\n\nWould you be open to connecting to discuss a quick 2‑minute demo?",
+    "rationale": "The lead posted about lead follow‑up issues, a clear signal of need for our AI receptionist, and is a decision‑maker, fitting the warm tier despite no prior relationship.",
+    "confidence": 0.92,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L004",
+        "firstName": "James",
+        "lastName": "O'Connell",
+        "companyName": "O'Connell Med Spa",
+        "city": "Miami",
+        "state": "FL",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.92
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Founder"
+          },
+          {
+            "key": "industry",
+            "field_value": "Medspa"
+          },
+          {
+            "key": "company_size",
+            "field_value": "1-10"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 60
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi James,\n\nI saw your post about the challenges of lead follow‑up speed at your med spa. We’ve helped similar clinics streamline that process with AI‑driven receptionists.\n\nWould you be open to connecting to discuss a quick 2‑minute demo?"
+      },
+      "note": {
+        "body": "Agent: The lead posted about lead follow‑up issues, a clear signal of need for our AI receptionist, and is a decision‑maker, fitting the warm tier despite no prior relationship."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0002",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

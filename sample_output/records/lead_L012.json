@@ -1,0 +1,155 @@
+{
+  "recordId": "lead:L012",
+  "input": {
+    "id": "lead:L012",
+    "type": "lead",
+    "source": "linkedin_csv",
+    "sourceRef": "mock_leads.csv:line 13",
+    "person": {
+      "firstName": "Tom",
+      "lastName": "Whitfield",
+      "fullName": "Tom Whitfield"
+    },
+    "contact": {},
+    "location": {
+      "city": "Charlotte",
+      "region": "NC",
+      "country": "US"
+    },
+    "lead": {
+      "jobTitle": "Founder & CEO",
+      "company": "Whitfield Urgent Care",
+      "industry": "Healthcare",
+      "companySize": "11-50",
+      "headline": "Founder, ex-ER physician, building urgent care chain",
+      "recentActivity": "Commented on a post about after-hours call handling",
+      "connectionNote": "Cold outreach, no interaction history"
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "lead-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 3098,
+      "outputTokens": 332
+    },
+    "durationMs": 60173,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_lead_score",
+        "args": {
+          "lead_id": "lead:L012"
+        },
+        "result": {
+          "score": 55,
+          "suggestedTier": "warm",
+          "reasons": [
+            "+15 wrote about the topic publicly",
+            "+15 activity matches what we sell",
+            "+15 decision maker",
+            "+10 company size in our sweet spot",
+            "+0 cold, no relationship yet"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "linkedin_connection_request",
+          "message": "Hi Tom, I saw your comment on the after‑hours call handling post. It’s great to see an urgent‑care founder thinking about efficient patient communication. Would you be open to connecting?"
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 187
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "consultative",
+    "language": "en",
+    "message": "Hi Tom, I saw your comment on the after‑hours call handling post. It’s great to see an urgent‑care founder thinking about efficient patient communication. Would you be open to connecting?",
+    "rationale": "The lead commented on a relevant after‑hours call handling post, indicating interest in our solution, and is a decision‑maker in a target company size.",
+    "confidence": 0.9,
+    "category": "warm",
+    "channel": "linkedin_connection_request"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "lead:L012",
+        "firstName": "Tom",
+        "lastName": "Whitfield",
+        "companyName": "Whitfield Urgent Care",
+        "city": "Charlotte",
+        "state": "NC",
+        "country": "US",
+        "source": "LinkedIn Sales Navigator",
+        "tags": [
+          "lead",
+          "warm"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "warm"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "linkedin_connection_request"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.9
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "lead-v2"
+          },
+          {
+            "key": "job_title",
+            "field_value": "Founder & CEO"
+          },
+          {
+            "key": "industry",
+            "field_value": "Healthcare"
+          },
+          {
+            "key": "company_size",
+            "field_value": "11-50"
+          },
+          {
+            "key": "lead_score",
+            "field_value": 55
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "linkedin_connection_request",
+        "language": "en",
+        "message": "Hi Tom, I saw your comment on the after‑hours call handling post. It’s great to see an urgent‑care founder thinking about efficient patient communication. Would you be open to connecting?"
+      },
+      "note": {
+        "body": "Agent: The lead commented on a relevant after‑hours call handling post, indicating interest in our solution, and is a decision‑maker in a target company size."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0010",
+      "status": "updated",
+      "attempts": 1
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "recordId": "patient:f3721a5a-dfae-4933-b2fd-b001210c6b3b",
+  "input": {
+    "id": "patient:f3721a5a-dfae-4933-b2fd-b001210c6b3b",
+    "type": "patient",
+    "source": "smart_fhir_r4",
+    "sourceRef": "https://r4.smarthealthit.org/Patient/f3721a5a-dfae-4933-b2fd-b001210c6b3b",
+    "person": {
+      "firstName": "Jenna",
+      "lastName": "Hagenes",
+      "fullName": "Jenna Hagenes"
+    },
+    "contact": {
+      "phone": "555-444-2497"
+    },
+    "location": {
+      "city": "Boston",
+      "region": "Massachusetts",
+      "country": "US"
+    },
+    "patient": {
+      "birthDate": "1992-10-08",
+      "age": 34,
+      "gender": "female",
+      "isDeceased": false,
+      "language": "en",
+      "conditions": [
+        {
+          "code": "271737000",
+          "name": "Anemia"
+        },
+        {
+          "code": "40055000",
+          "name": "Chronic sinusitis"
+        },
+        {
+          "code": "38341003",
+          "name": "Hypertension"
+        },
+        {
+          "code": "15777000",
+          "name": "Prediabetes"
+        }
+      ]
+    }
+  },
+  "agent": {
+    "decidedBy": "agent",
+    "promptVersion": "patient-v2",
+    "llmCalls": 3,
+    "usage": {
+      "inputTokens": 2695,
+      "outputTokens": 284
+    },
+    "durationMs": 59959,
+    "steps": [
+      {
+        "kind": "tool_call",
+        "tool": "get_care_summary",
+        "args": {
+          "patient_id": "patient:f3721a5a-dfae-4933-b2fd-b001210c6b3b"
+        },
+        "result": {
+          "activeConditions": [
+            "Anemia",
+            "Chronic sinusitis",
+            "Hypertension",
+            "Prediabetes"
+          ],
+          "chronicConditions": [
+            "Chronic sinusitis",
+            "Hypertension",
+            "Prediabetes"
+          ],
+          "riskFlags": [],
+          "sensitiveConditionsOmitted": 0,
+          "contactOptions": [
+            "sms"
+          ]
+        }
+      },
+      {
+        "kind": "tool_call",
+        "tool": "check_message",
+        "args": {
+          "channel": "sms",
+          "message": "Hi Jenna, we hope you're well! It's time to schedule your next follow‑up visit. Please reply with a convenient time or call us at 555‑123‑4567. Reply STOP to opt out."
+        },
+        "result": {
+          "ok": true,
+          "problems": [],
+          "characters": 166
+        }
+      }
+    ]
+  },
+  "decision": {
+    "escalate": false,
+    "tone": "friendly",
+    "language": "en",
+    "message": "Hi Jenna, we hope you're well! It's time to schedule your next follow‑up visit. Please reply with a convenient time or call us at 555‑123‑4567. Reply STOP to opt out.",
+    "rationale": "Patient has chronic conditions and no risk flags, so a follow‑up invitation is appropriate.",
+    "confidence": 0.99,
+    "category": "chronic_care_followup",
+    "channel": "sms"
+  },
+  "crm": {
+    "request": {
+      "locationId": "loc_mock_clinic_growth",
+      "contact": {
+        "externalId": "patient:f3721a5a-dfae-4933-b2fd-b001210c6b3b",
+        "firstName": "Jenna",
+        "lastName": "Hagenes",
+        "phone": "555-444-2497",
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "US",
+        "source": "SMART Health IT FHIR",
+        "tags": [
+          "patient",
+          "chronic_care_followup"
+        ],
+        "dnd": false,
+        "customFields": [
+          {
+            "key": "agent_category",
+            "field_value": "chronic_care_followup"
+          },
+          {
+            "key": "agent_channel",
+            "field_value": "sms"
+          },
+          {
+            "key": "agent_confidence",
+            "field_value": 0.99
+          },
+          {
+            "key": "decided_by",
+            "field_value": "agent"
+          },
+          {
+            "key": "prompt_version",
+            "field_value": "patient-v2"
+          },
+          {
+            "key": "fhir_patient_id",
+            "field_value": "f3721a5a-dfae-4933-b2fd-b001210c6b3b"
+          }
+        ]
+      },
+      "outreach": {
+        "channel": "sms",
+        "language": "en",
+        "message": "Hi Jenna, we hope you're well! It's time to schedule your next follow‑up visit. Please reply with a convenient time or call us at 555‑123‑4567. Reply STOP to opt out."
+      },
+      "note": {
+        "body": "Agent: Patient has chronic conditions and no risk flags, so a follow‑up invitation is appropriate."
+      },
+      "task": null
+    },
+    "delivery": {
+      "ok": true,
+      "crmId": "crm_0098",
+      "status": "created",
+      "attempts": 1
+    }
+  }
+}
